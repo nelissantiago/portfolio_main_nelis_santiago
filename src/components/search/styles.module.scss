@@ -1,0 +1,125 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .title {
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        font-size: 1.944rem;
+        color: black;
+    }
+
+    .search {
+        display: flex;
+        align-items: center;
+        svg {
+            font-size: 1.4rem;
+            color: black;
+        }
+    }
+
+    .repos {
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+    }
+
+}
+
+.main {
+    padding: 3rem 0.8rem 2rem;
+
+    .grid {
+        max-width: 865px;
+        margin: 0 auto;
+        padding: 12px 20px 25px;
+
+        background-color: white;
+        box-shadow: 0 5px 10px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 24px;
+
+        @media screen and (max-width: 500px) {
+            padding: 0 0.5rem 0;
+            border-radius: 12px;
+            box-shadow: none;
+            background-color: transparent;
+        }
+
+        
+    }
+
+    .inputSearch {
+        border: 0;
+        display: block;
+        width: 100%;
+        border-radius: 4px;
+        padding: 15px 10px;
+        font-size: 15.5px;
+        transition: all 0.3s ease-in-out;
+        background-color: transparent;
+        color: black;
+
+        &::placeholder {
+            font-size: 1.1rem;
+        }
+    }
+
+    .error {
+        font-size: 1.1rem;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .SearchContent {
+        border-bottom: 1px solid #d0d7de;
+        margin-top: 1.4rem;
+        line-height: 1.9;
+        padding-bottom: 10px;
+
+    .List {
+        .time {
+            font-size: 1rem;
+        }
+
+        .info {
+            h3 {
+                display: flex;
+                align-items: center;
+                .link {
+                    color: #0969da;
+                    font-size: 1.154rem;
+
+                    @media (max-width: 500px) {
+                        font-size: 1.2rem;
+                    }
+                }
+
+                .link:hover {
+                    filter: brightness(0.7);
+                }
+            }
+
+            .text {
+                font-size: 1rem;
+            }
+        }
+
+        .released {
+            font-size: 0.8rem;
+            padding: 0 7px;
+            font-weight: 500;
+            line-height: 20px;
+            border: 1px solid #5a5a5a;
+            border-radius: 2rem;
+            margin-left: 0.3rem;
+        }
+    }
+ }
+
+ @media (max-width: 500px) {
+    padding: 1.5rem 0.8rem 0;
+ }
+}

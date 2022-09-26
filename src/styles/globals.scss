@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white: white;
+  --header: #3232328d;
+
+  --gray-100: #e1e1e6;
+  --gray-300: #202020;
+  --gray-500: #121214;
+  --gray-800: #616161;
+  --gray-850: #1f2729;
+
+  --black-100:rgb(90, 90, 90);
+  --black-300:#58585862;
+  --black-600: #909090;
+  --black-700:rgb(22, 22, 22);
+
+
+  --selection: rgb(77, 5, 149);
+  --yellow-500: yellow;	
+  --pattern: #0e091b;
+  --white-300: rgb(211, 211, 211);
+  --post-color: #27272a;
+  --background-default: #080713;
+
+  --color-text: navy;
+  --color-bg: papayawhip;
+  
+   --size: clamp(10rem, 1rem + 40vmin, 30rem);
+  --gap: calc(var(--size) / 14);
+  --duration: 60s;
+  --scroll-start: 0;
+  --scroll-end: calc(-100% - var(--gap));
+  --container-size: 3.5rem;
+  --block-size: calc(var(--container-size) / 3);
+  --travel-length: calc(var(--container-size) - var(--block-size));
+}
+
+:focus {
+  outline: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+@media screen and (max-width: 1080px) {
+  html {
+      font-size: 93,75%;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  html {
+      font-size: 87.5%;
+  }
+}
+
+body, input, textarea, select, button {
+  font: 400 1rem "Roboto", sans-serif;
+}
+
+h1, h2, h3, h4, h5, span, p {
+  margin: 0;
+}
+
+::selection {
+  background-color: var(--black-300);
+}
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+   text-decoration: none;
+}
+
+input:focus,
+button:focus {
+   border: 0;
+}
+
+button {
+   border: 0;
+}
+
+    .light {
+      background-color: #fafcff;
+      transition: ease-out all 0.2s;
+
+      
+      svg {
+        color: black;
+      }
+
+      a {
+        color: #0e091b;
+      }
+      
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        border-radius: 2px;
+        background-color: #616161;
+      }
+
+      
+    }
+
+    .dark {
+      background-color: #0f1524;
+      transition: ease-out all 0.2s;
+
+      svg {
+        color: white;
+    }
+    a {
+      color: #fff;
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        border-radius: 2px;
+        background-color: #2256cf;
+      }
+    }

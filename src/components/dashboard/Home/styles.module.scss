@@ -1,0 +1,186 @@
+.main {
+
+    .grid  {
+    margin: 0 auto;
+    max-width: 720px;
+    padding: 0 1rem;
+   }
+
+   .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    max-width: 680px;
+
+    .profile {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+
+        img {
+            border-radius: 50%;
+            width: 57px;
+            border: solid 1px #ccc;
+        }
+    
+        span {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        
+    }
+
+    button {
+        background-color: rgba(255, 0, 0, 0.784);
+        cursor: pointer;
+        font-size: 1.1rem;
+        padding: 9px 12px;
+        border-radius: 6px;
+        transition: color 0.2s;
+    }
+   }
+
+   .container {
+    .gridContainer {
+        max-width: 720px;
+        margin-top: 1rem;
+
+        .info {
+            margin-top: 1rem;
+            max-width: 680px;
+            
+            .card {
+                border: solid red 1px;
+                height: 15rem;
+            }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.grid {
+    max-width: 880px;
+    margin: 0 auto;
+    
+    padding: 0 0.25rem;
+
+    
+.header {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    justify-content: space-between;
+
+    .profile {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        img {
+            display: flex;
+            width: 52px;
+            border-radius: 50%;
+        }
+
+        h2 {
+            font-size: 1.454rem;
+        }
+    }
+
+    button {
+        background: rgba(211, 10, 10, 0.803);
+        padding: 10px 15px;
+        border-radius: 6px;
+        color: white;
+        
+        font-size: 1.1rem;
+    }
+}
+
+    .container {
+       margin-top: 1rem;
+       .discord {
+        margin-top: 1rem;
+        iframe {
+            border: 0;
+        }
+       }
+    }
+
+
+
+}**/
