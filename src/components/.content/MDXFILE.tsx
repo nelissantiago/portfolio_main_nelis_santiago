@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { ComponentMap, getMDXComponent } from 'mdx-bundler/client';
-import Image from 'next/image';
+import Image from 'next/future/image';
 import {CustomLink} from './Link';
 
 interface Props {

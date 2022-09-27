@@ -2,12 +2,12 @@ import { Header } from './Header';
 import {CustomLink} from './Link';
 import { formatDate } from '../utils/Date';
 import { useState } from 'react';
-import { PostFrontMatter } from '../../@types/Post';
 import styles from './styles.module.scss'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
-import App from '../../lib/particles';
+import App from '../utils/particles';
 import { Repos } from '../utils/CreateSVG';
+import { PostFrontMatter } from '../../@types/interfaces';
 
 interface Props {
   posts: PostFrontMatter[];

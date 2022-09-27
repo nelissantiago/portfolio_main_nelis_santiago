@@ -6,12 +6,9 @@ import styles from './styles.module.scss'
 import { useRouter } from 'next/router';
 import { HeaderAvatarProfile } from '../dashboard/Header';
 import { useSession } from 'next-auth/react';
-import { toast } from 'react-toastify';
 
 export function Header() {
-    const router = useRouter();
-    const {data, status} = useSession()
-
+    
     function Progress() {
         progress.start()
         progress.done()

@@ -1,11 +1,13 @@
 import { Header } from './Header';
 import { useState } from 'react';
-import { ContentFrontMatter } from '../../@types/Post';
 import styles from './styles.module.scss'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import { Repos } from '../utils/CreateSVG';
-import App from '../../lib/particles';
+import App from '../utils/particles';
+import { ContentFrontMatter } from '../../@types/interfaces';
+
+
 
 interface Props {
   posts: ContentFrontMatter[];
@@ -13,7 +15,7 @@ interface Props {
   initialDisplayPosts?: ContentFrontMatter[];
 }
 
-export default function ListLayout({ posts, initialDisplayPosts }: Props) {
+export default function ListLayoutt({ posts, initialDisplayPosts }: Props) {
   const [searchValue,  setSearchValue] = useState('');
   const filteredBlogPosts = posts.filter(frontMatter => {
     const searchContent = frontMatter.name + frontMatter.summary + frontMatter.tags.join(' ');

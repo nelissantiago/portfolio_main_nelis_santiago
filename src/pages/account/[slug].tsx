@@ -4,24 +4,23 @@ import Head from "next/head";
 
 import { prisma } from '../../lib/prisma'
 import { DashBoard } from "../../components/dashboard/Home";
-import { INewAccount } from "../../@types/challenges.interface";
 import { authOptions } from "../api/auth/[...nextauth]";
+import { INewAccount } from "../../@types/interfaces";
 
 interface AccountProps {
   newaccount: INewAccount;
 }
 
-
-const Account: NextPage<AccountProps> = () => {
+export default function Account() {
   return (
-    <div>
+    <>
       <Head>
         <title>Dashboard</title>
       </Head>
       <DashBoard />
-    </div>
-  );
-};
+    </>
+  )
+}
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 
@@ -64,4 +63,3 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-export default Account;

@@ -3,6 +3,7 @@ import { signOut, useSession } from "next-auth/react";
 import Form from '../contact';
 import {useKeenSlider} from 'keen-slider/react';
 import "keen-slider/keen-slider.min.css";
+import Image from 'next/future/image'
 
 export function DashBoard() {
   const [ sliderREF ] = useKeenSlider({
@@ -18,7 +19,7 @@ export function DashBoard() {
             <div className={styles.grid}>
             <header className={styles.header}>
             <div className={styles.profile}>
-              <img src={data?.user.image} alt="" />
+              <Image src={data?.user.image} alt="" width={57} height={57} />
               <span>Nelis Santiago</span>
             </div>
               <button onClick={() => signOut()}>Sair</button>
@@ -28,7 +29,7 @@ export function DashBoard() {
                 <div className={styles.form}>
                   <Form />
                 </div>
-
+             
               </div>
               </section>
             </div>
@@ -37,10 +38,9 @@ export function DashBoard() {
     )
 }
 
-
 /**
  * 
- *       <div className={styles.info}>            
+ *    <div className={styles.info}>            
                 <div className='keen-slider' ref={sliderREF}>
                   <article className='keen-slider__slide'>
                     <div className={styles.card}>
@@ -61,6 +61,7 @@ export function DashBoard() {
                 </div>
  * 
  */
+
 
 /**  <div className={styles.grid}>
               <header className={styles.header}>

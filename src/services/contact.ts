@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import nodemailer from 'nodemailer';
 import { google } from 'googleapis';
 
@@ -26,12 +27,13 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+
 const mailer = ({ senderMail, name, text }) => {
   const from = `${name} <${senderMail}>`;
   const message = {
     from,
     to: `${email}`,
-    subject: `Nova mensagem de contato - ${name}`,
+    subject: `${name} - Mandou uma nova mensagem.`,
     text,
     replyTo: from
   };
@@ -54,3 +56,5 @@ export default async (req, res) => {
   const mailerRes = await mailer({ senderMail, name, text: content });
   res.send(mailerRes);
 };
+
+

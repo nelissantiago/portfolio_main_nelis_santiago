@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 
 import { KnowledgeProps } from '../../@types/interfaces'
-import Image from 'next/image'
+import Image from 'next/future/image'
 import styles from './styles.module.scss'
 
 export function KnowledgePage({tooltip, img, width, height}: KnowledgeProps) {

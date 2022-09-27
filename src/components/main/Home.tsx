@@ -4,20 +4,18 @@ import styles from './styles.module.scss'
 import { Discord, GitHub, Instagram, Whatsapp } from '../utils/CreateSVG'
 import Typewriter from 'typewriter-effect';
 import { HomeProps } from '../../@types/interfaces';
-import Link from 'next/link';
+import Image from 'next/future/image'
 import progress from '../../lib/progress';
 
 export function HomePage({ logoImg, title, typerwriter, paragraph }: HomeProps) {
-
     function Progress() {
         progress.start()
         progress.done()
     }
-
     return (
         <>
         <div className={styles.profile}>
-            <img src={logoImg} alt="nelis_santiago" />
+            <Image src={logoImg} alt="nelis_santiago" width={85} height={85} />
             <h1>{title}</h1>
                 <Typewriter 
                 onInit={(typewriter) => {

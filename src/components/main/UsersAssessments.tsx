@@ -1,5 +1,6 @@
 import { gql, useQuery }  from '@apollo/client'
 import styles from './styles.module.scss'
+import Image from 'next/future/image'
 
 const GET_BY_AVALIATION_GRAPH = gql`
 query MyQuery {
@@ -30,7 +31,7 @@ export function UsersList() {
                     <>
                     <div className={styles.list}>
                     <div className={styles.profile}>
-                        <img src={react.avatar} alt="" />
+                        <Image src={react.avatar} alt="" width={49} height={49} />
                         <span>{react.nome}</span>
                     </div>
                     <div className={styles.text}>

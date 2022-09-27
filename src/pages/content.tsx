@@ -5,6 +5,20 @@ import { POSTS_PER_PAGE } from '../config';
 import SafeHydrate from '../lib/Hydrate';
 
 
+export default function Search({ posts, initialDisplayPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
+
+  return (
+    <>      
+        <ListLayoutt 
+            posts={posts} 
+            initialDisplayPosts={initialDisplayPosts} 
+            title='Conteudo.'
+          />
+
+    </>
+  );
+}
+
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getAllFilesFrontMatter('src/data/posts');
 
@@ -14,19 +28,3 @@ export const getStaticProps: GetStaticProps = async () => {
 
 };
 
-export default function Search({ posts, initialDisplayPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
-
-  return (
-    <>      
-       <SafeHydrate>
-        <ListLayoutt 
-            posts={posts} 
-            initialDisplayPosts={initialDisplayPosts} 
-            title='Conteudo.'
-          />
-        </SafeHydrate>
-
-    </>
-  );
-
-}

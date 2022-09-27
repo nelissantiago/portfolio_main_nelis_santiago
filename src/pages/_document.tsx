@@ -1,4 +1,3 @@
-import { ThemeProvider } from "next-themes"
 import Document,  { Html, Head, Main, NextScript }  from "../../node_modules/next/document"
 
 export default class MyDocument extends Document {

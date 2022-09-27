@@ -5,8 +5,9 @@ import { ThemeSwitch } from "../utils/Darktoggle";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import { DiscordProps } from "../../@types/interfaces";
+import Image from 'next/future/image'
 import { LoadingDiscord } from "./Loading";
-import App from "../../lib/particles";
+import App from "../utils/particles";
 
 
 export function Status() {
@@ -90,7 +91,7 @@ export function Status() {
 									<div className={styles.status}>
 									<span className={styles.span}>Jogando.</span>
 									<div className={styles.playing}>
-										<img src={react.Image} alt="" />
+										<Image src={react.Image} alt="" width={75} height={75} />
 										<div className={styles.text}>
 											{StatusDiscord?.map(react => {
 											return (

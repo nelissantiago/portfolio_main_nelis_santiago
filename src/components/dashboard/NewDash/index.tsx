@@ -1,4 +1,4 @@
-import { INewAccount } from "../../../@types/challenges.interface";
+import { INewAccount } from "../../../@types/interfaces";
 import { Challenge } from "../Dash";
 
 

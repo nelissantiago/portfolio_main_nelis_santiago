@@ -14,7 +14,7 @@ export function HeaderAvatarProfile() {
         <a href="/account/dashboard"><Account /></a>
        ) : (
         <>
-          <a href="" onClick={() => signIn('github')}><Account /></a>
+          <button onClick={() => signIn('github')}><Account /></button>
         </>
        )}
     </>

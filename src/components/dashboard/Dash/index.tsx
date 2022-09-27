@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { INewAccount } from "../../../@types/challenges.interface";
+import { INewAccount } from "../../../@types/interfaces";
 
 
 

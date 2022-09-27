@@ -2,7 +2,8 @@ import ListLayout from './Search';
 import { getAllFilesFrontMatter } from '../utils/mdx/contentMdx';
 import { POSTS_PER_PAGE } from '../../config';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import { PostFrontMatter } from '../../@types/Post';
+import { PostFrontMatter } from '../../@types/interfaces';
+
 
 export const getStaticPaths: GetStaticPaths<{
   slug: string;

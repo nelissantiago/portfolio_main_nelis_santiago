@@ -3,6 +3,7 @@ import styles from './styles.module.scss'
 
 import axios from "axios"
 import React, { useEffect, useState } from "react";
+import Image from 'next/future/image'
 
 
 interface IfeedItem {
@@ -37,7 +38,7 @@ export function Instagram() {
                 return (
                    <>
                      <div className={styles.container}>
-                        <img src={react.media_url} alt="adadadad" />
+                        <Image src={react.media_url} alt="adadadad" width={100} height={100} />
                     </div>
                    </>
                 )

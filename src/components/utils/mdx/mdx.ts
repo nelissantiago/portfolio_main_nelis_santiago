@@ -1,9 +1,8 @@
 import fs, { readFileSync } from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
+import { AuthorFrontMatter, PostFrontMatter } from '../../../@types/interfaces';
 
-import { PostFrontMatter } from '../../../@types/Post';
-import { AuthorFrontMatter } from '../../../@types/Author';
 import getAllFilesRecursively from '../file';
 const root = process.cwd();
 

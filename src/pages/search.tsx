@@ -1,20 +1,18 @@
 import { getAllFilesFrontMatter } from '../components/utils/mdx/mdx';
 import ListLayout from '../components/search/Search';
-import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { GetStaticProps } from 'next';
 import { POSTS_PER_PAGE } from '../config';
 import SafeHydrate from '../lib/Hydrate';
 
-export default function Search({ posts, initialDisplayPosts }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Search({ posts, initialDisplayPosts }) {
 
   return (
     <>
-      <SafeHydrate>
             <ListLayout 
                   posts={posts} 
                   initialDisplayPosts={initialDisplayPosts} 
                   title='Repositorio.'
-                />
-      </SafeHydrate>
+                />      
     </>
   );
 }

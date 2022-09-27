@@ -9,6 +9,12 @@ const nextConfig = {
     domains: ["avatars.githubusercontent.com", "github.com"],
   },
 
+  experimental: {
+    images: {
+      allowFutureImage: true
+    }
+  }
+  
 }
 
 module.exports = nextConfig

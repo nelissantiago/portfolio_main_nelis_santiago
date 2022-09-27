@@ -1,5 +1,6 @@
 import { StaticImageData } from "next/image";
-import { ReactNode } from "react";
+import uuuid from 'uuid'
+import { Newaccount, Tag  } from "@prisma/client";
 export interface FrieldsProps {
     name: string;
     profissao: string;
@@ -80,4 +81,65 @@ export interface DiscordProps {
 		}
 		application_id?: string;
 	};
+}
+
+export type ITag = Tag;
+
+export type INewAccount = Newaccount & {
+  tags: ITag[];
+};
+
+export type PostFrontMatter = {
+    title: string;
+    date: string;
+    link: string;
+    tags: string[];
+    lastmod?: string;
+    Released: string;
+    type: string;
+    draft?: boolean;
+    summary?: string;
+    images?: string[];
+    authors?: string[];
+    layout?: string;
+    readingTime: any;
+    canonicalUrl?: string;
+    slug: string;
+    name: string;
+  };
+  
+  export type  ContentFrontMatter = {
+    name: string;
+    summary?: string;
+    link?: string;
+    tags?: string[];
+    image?: string[];
+    layout?: string;
+    slug: string;
+  }
+
+  export type Toc = {
+    value: string;
+    depth: number;
+    url: string;
+  }[];
+  
+
+  export type AuthorFrontMatter = {
+    layout?: string;
+    name: string;
+    shortname: string;
+    avatar: string;
+    occupation: string;
+    company: string;
+    resume: string;
+    email: string;
+    twitter: string;
+    linkedin: string;
+    github: string;
+  };
+  
+export interface newBook {
+    id: uuuid;
+    
 }

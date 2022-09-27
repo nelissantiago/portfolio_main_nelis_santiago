@@ -5,14 +5,14 @@ export const sendContactMail = async (
   senderMail: string,
   content: string
 ) => {
-  const data = {
+  const dataemail = {
     name,
     senderMail,
     content
   };
 
   try {
-    return await axios.post('/api/contact', data);
+    return await axios.post('/services/contact', dataemail);
   } catch (error) {
     return error;
   }
