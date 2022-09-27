@@ -61,20 +61,3 @@ export function DashBoard() {
                 </div>
  * 
  */
-
-
-/**  <div className={styles.grid}>
-              <header className={styles.header}>
-               <div className={styles.profile}>
-               <img src={data?.user.image} alt="" />
-                <h2>{data?.user.name}</h2>
-               </div>
-                <button onClick={() => signOut()}>Sair</button>
-              </header>
-              <section className={styles.container}>
-                <Form />
-                <div className={styles.discord}>
-                  <Discord />
-                </div>
-              </section>
-            </div> */

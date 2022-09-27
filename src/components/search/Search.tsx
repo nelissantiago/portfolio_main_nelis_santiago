@@ -1,5 +1,4 @@
 import { Header } from './Header';
-import {CustomLink} from './Link';
 import { formatDate } from '../utils/Date';
 import { useState } from 'react';
 import styles from './styles.module.scss'
@@ -53,13 +52,9 @@ export default function ListLayout({posts, initialDisplayPosts }: Props) {
                 <article className={styles.List}>     
                   <div className={styles.info}>
                       <h3>
-                        <CustomLink
-                          href={link}
-                          className={styles.link}
-                        >
-
+                        <a href="" className={styles.link}>
                           {title}
-                        </CustomLink>
+                        </a>
                         <span className={styles.released}>
                             {Released}
                           </span>

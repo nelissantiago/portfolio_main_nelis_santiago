@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 * {
   margin: 0;
   padding: 0;
@@ -34,7 +30,7 @@
   --color-text: navy;
   --color-bg: papayawhip;
   
-   --size: clamp(10rem, 1rem + 40vmin, 30rem);
+  --size: clamp(10rem, 1rem + 40vmin, 30rem);
   --gap: calc(var(--size) / 14);
   --duration: 60s;
   --scroll-start: 0;

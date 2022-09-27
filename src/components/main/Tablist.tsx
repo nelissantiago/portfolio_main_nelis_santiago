@@ -44,7 +44,7 @@ export function Tablist({name, nametwo, title, pargraph, link, linktwo, titletwo
                         {pargraphtwo}
                     </p>
                     <div className={styles.linkAcess}>
-                        <button onClick={HandleCopyProfile}>Acessar eBook<EBookAcess/></button>
+                        <button onClick={HandleCopyProfile} type="button">Acessar eBook<EBookAcess/></button>
                     </div>
                 </TabPanel>
             </Tabs>
