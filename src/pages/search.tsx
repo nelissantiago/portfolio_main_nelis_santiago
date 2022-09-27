@@ -1,8 +1,7 @@
-import { getAllFilesFrontMatter } from '../components/utils/mdx/mdx';
+import { getAllFilesFrontMatter } from '../components/utils/mdx/contentMdx';
 import ListLayout from '../components/search/Search';
 import { GetStaticProps } from 'next';
 import { POSTS_PER_PAGE } from '../config';
-import SafeHydrate from '../lib/Hydrate';
 
 export default function Search({ posts, initialDisplayPosts }) {
 

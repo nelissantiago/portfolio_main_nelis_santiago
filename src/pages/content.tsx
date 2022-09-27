@@ -2,7 +2,6 @@ import { getAllFilesFrontMatter } from '../components/utils/mdx/contentMdx';
 import ListLayoutt from '../components/.content/Content';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { POSTS_PER_PAGE } from '../config';
-import SafeHydrate from '../lib/Hydrate';
 
 
 export default function Search({ posts, initialDisplayPosts }: InferGetStaticPropsType<typeof getStaticProps>) {

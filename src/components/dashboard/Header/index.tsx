@@ -11,7 +11,7 @@ export function HeaderAvatarProfile() {
   return (
     <>
        {status === 'authenticated' ? (
-        <a href="/account/dashboard"><Account /></a>
+        <button type="button"><Account /></button>
        ) : (
         <>
           <button onClick={() => signIn('github')} type="button" ><Account /></button>

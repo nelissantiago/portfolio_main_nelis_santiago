@@ -1,4 +1,4 @@
-import fs, { readFileSync } from 'fs';
+import  { readFileSync } from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 import { AuthorFrontMatter, PostFrontMatter } from '../../../@types/interfaces';
@@ -6,7 +6,7 @@ import { AuthorFrontMatter, PostFrontMatter } from '../../../@types/interfaces';
 import getAllFilesRecursively from '../file';
 const root = process.cwd();
 
-export function getFiles(type: '/data/posts' ) {
+export function getFiles(type: '/data/posts' | '/data/blog') {
   return getAllFilesRecursively(path.join(root, 'data', type));
   
 }
@@ -21,7 +21,7 @@ export function dateSortDesc(a: string, b: string) {
   return 0;
 }
 
-export async function getAllFilesFrontMatter(folder: 'src/data/posts' | '/author') {
+export async function getAllFilesFrontMatter(folder: 'src/data/posts' | 'src/data/blog' | '/author') {
   const prefixPaths = path.join(root, '', folder);
 
   const files = getAllFilesRecursively(prefixPaths);
