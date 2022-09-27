@@ -19,7 +19,7 @@ export function Header() {
                 <h2>Nelis Santiago.</h2>
                     <div className={styles.nav}>
                        <ThemeSwitch />
-                        <a href="/search" onClick={Progress}><Search /></a>
+                        <a className={styles.link} href="/search" onClick={Progress}><Search /></a>
                         <HeaderAvatarProfile  />
                     </div>
                 </div>
