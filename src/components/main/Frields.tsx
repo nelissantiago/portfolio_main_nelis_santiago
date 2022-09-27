@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @next/next/no-img-element */
 import { toast } from 'react-toastify'
 import { FrieldsProps } from '../../@types/interfaces'
@@ -31,7 +32,7 @@ export function FrieldPage({ name, profissao, avatar, buttonCopy, href, copy }: 
                 <a href={href} className={styles.inst}>
                      <Instagram />
                 </a>
-                <a href=""  className={styles.inst}>
+                <a href="/"  className={styles.inst}>
                     <GitHub />
                 </a>
             </div>

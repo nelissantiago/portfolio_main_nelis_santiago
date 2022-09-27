@@ -36,7 +36,7 @@ export function HomePage({ logoImg, title, typerwriter, paragraph }: HomeProps) 
                 <a href='/status' onClick={Progress}><Discord /></a>
             <a href="https://github.com/slaidezera"><GitHub /></a>
             <a href="https://instagram.com/nelis_code"><Instagram /></a>
-            <a href=""><Whatsapp /></a>
+            <a href="/"><Whatsapp /></a>
         </div>   
         </>
     )

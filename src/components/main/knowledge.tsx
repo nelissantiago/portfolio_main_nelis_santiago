@@ -10,7 +10,7 @@ export function KnowledgePage({tooltip, img, width, height}: KnowledgeProps) {
       <article className={styles.wrapper}>
         <div className={styles.react} id={styles.facebook}>
             <span className={styles.tooltip}>{tooltip}</span>
-            <Image src={img} width={width} height={height}/>
+            <Image src={img} width={width} height={height} alt=""/>
         </div>
     </article>
         </>
