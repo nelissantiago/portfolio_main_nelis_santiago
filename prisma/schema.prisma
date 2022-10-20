@@ -64,7 +64,9 @@ model VerificationToken {
 model Newaccount {
   id          String @id @default(auto()) @map("_id") @db.ObjectId
   slug        String @unique
-  count BigInt @default(1)
+  title      String
+  description String
+  embedId String
   tags ChallengeTags[]
 
   @@map("newaccounts")
@@ -72,6 +74,7 @@ model Newaccount {
 
 model Tag {
   id         String          @id @default(auto()) @map("_id") @db.ObjectId
+  name       String          @unique
   slug       String          @unique
   newaccounts ChallengeTags[]
 
