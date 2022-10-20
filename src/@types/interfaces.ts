@@ -1,6 +1,7 @@
 import { StaticImageData } from "next/image";
 import uuuid from 'uuid'
-import { Newaccount, Tag  } from "@prisma/client";
+import { Newaccount, Tag } from "@prisma/client";
+
 export interface FrieldsProps {
     name: string;
     profissao: string;
@@ -83,11 +84,12 @@ export interface DiscordProps {
 	};
 }
 
-export type ITag = Tag;
 
+export type ITag = Tag;
 export type INewAccount = Newaccount & {
   tags: ITag[];
 };
+
 
 export type PostFrontMatter = {
     title: string;
@@ -104,7 +106,6 @@ export type PostFrontMatter = {
     layout?: string;
     readingTime: any;
     canonicalUrl?: string;
-    slug: string;
     name: string;
   };
   

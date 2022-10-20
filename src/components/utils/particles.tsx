@@ -5,7 +5,7 @@ import { loadFull } from "tsparticles";
 
 type Engine = any
 
-function App()  {
+export function FragementParticles()  {
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadFull(engine);
   }, []);
@@ -79,5 +79,3 @@ function App()  {
     />
   );
 };
-
-export default App

@@ -4,7 +4,7 @@ import { Account } from "../../utils/CreateSVG";
 import { signIn, useSession } from 'next-auth/react';
 
 export function HeaderAvatarProfile() {
-  const { status} = useSession()
+  const { status } = useSession()
 
   return (
     <>
@@ -12,7 +12,7 @@ export function HeaderAvatarProfile() {
         <a className={styles.buttonLink} href="/account/dashboard"><Account /></a>
        ) : (
         <>
-          <button className={styles.buttonLink} onClick={() => signIn('github')} type="button"><Account /></button>
+          <button className={styles.buttonLink} onClick={() => signIn('github')} type='submit'><Account /></button>
         </>
        )}
     </>

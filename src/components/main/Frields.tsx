@@ -21,7 +21,7 @@ export function FrieldPage({ name, profissao, avatar, buttonCopy, href, copy }: 
         <>
         <article className={styles.frield}>
             <div className={styles.image}>
-                <Image src={avatar} alt=""  width={100} height={100}/>
+                <Image src={avatar} alt=""  width={108} height={108}/>
               </div>
                 <span>{name}</span>
                 <p>{profissao}</p>

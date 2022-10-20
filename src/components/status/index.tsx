@@ -5,9 +5,8 @@ import { ThemeSwitch } from "../utils/Darktoggle";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import { DiscordProps } from "../../@types/interfaces";
-import Image from 'next/future/image'
 import { LoadingDiscord } from "./Loading";
-import App from "../utils/particles";
+import { FragementParticles } from "../utils/particles";
 
 
 export function Status() {
@@ -70,7 +69,7 @@ export function Status() {
 			},
 				
 		},
-			 Image: `https://cdn.discordapp.com/app-assets/${status?.activities[1]?.application_id || status?.activities[1]?.application_id === undefined && '383226320970055681'}/${status?.activities[1]?.assets?.large_image  || status?.activities[1]?.assets?.large_image === undefined && '565945769320775680'}.webp?size=2048`,
+			 Image: `https://cdn.discordapp.com/app-assets/${status?.activities[1]?.application_id}/${status?.activities[1]?.assets?.large_image}.webp?size=2048`,
 	}
 		];
 
@@ -91,7 +90,7 @@ export function Status() {
 									<div className={styles.status}>
 									<span className={styles.span}>Jogando.</span>
 									<div className={styles.playing}>
-										<Image src={react.Image} alt="" width={75} height={75} />
+										<img key={react.Image} src={react.Image} alt="" width={75} height={75} />
 										<div className={styles.text}>
 											{StatusDiscord?.map(react => {
 											return (
@@ -117,7 +116,7 @@ export function Status() {
 						</>
 					)})}
 			</main>
-			<App />
+			<FragementParticles />
 		</>
 	)
 }

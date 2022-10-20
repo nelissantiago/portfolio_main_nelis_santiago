@@ -188,7 +188,7 @@ export function Main() {
                                 title={react.name}
                                 typerwriter={react.writer}
                                 paragraph={react.paragra}   
-                                copy={react.copy}             
+                                copy={react.copy}
                             />
                          </>
                         )

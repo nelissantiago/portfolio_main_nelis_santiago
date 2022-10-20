@@ -1,28 +1,11 @@
-import { getAllFilesFrontMatter } from '../components/utils/mdx/contentMdx';
-import ListLayout from '../components/search/Search';
-import { GetStaticProps } from 'next';
-import { POSTS_PER_PAGE } from '../config';
+import { SearchCreate } from "../components/search";
 
-export default function Search({ posts, initialDisplayPosts }) {
-
+export default function Search() {
   return (
     <>
-            <ListLayout 
-                  posts={posts} 
-                  initialDisplayPosts={initialDisplayPosts} 
-                  title='Repositorio.'
-                />      
+      <SearchCreate />
     </>
-  );
+  )
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-
-  const posts = await getAllFilesFrontMatter('src/data/blog');
-
-  const initialDisplayPosts = posts.slice(0, POSTS_PER_PAGE);
-  
-    return { props: { initialDisplayPosts, posts } };
-};
 
 

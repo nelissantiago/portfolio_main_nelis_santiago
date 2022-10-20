@@ -1,24 +1,17 @@
+import { Newaccount } from "@prisma/client";
 import Link from "next/link";
-import { INewAccount } from "../../../@types/interfaces";
 
 
 
 interface ChallengeProps {
-  newaccount: INewAccount;
-}
+  newaccount: Newaccount;
+}[]
 
 export function Challenge({ newaccount }: ChallengeProps) {
   
   return (
-    <Link href={`/account/${newaccount.slug}`} passHref>
-      <div>
-        <header>
-          <h2 >
-            hdad
-          </h2>
-          <br />
-        </header>
-      </div>
-    </Link>
+    <>
+      {newaccount?.slug}aa
+    </>
   );
 }
