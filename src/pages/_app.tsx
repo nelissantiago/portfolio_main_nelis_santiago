@@ -11,7 +11,6 @@ import '../styles/globals.scss'
 
 
 export default function MyApp({ Component, pageProps}: AppProps) {
- 
   useEffect(() => {
     progress.start()
     progress.done()

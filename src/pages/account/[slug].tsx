@@ -6,6 +6,7 @@ import { prisma } from '../../lib/prisma'
 import { DashBoard } from "../../components/dashboard/Home";
 import { authOptions } from "../api/auth/[...nextauth]";
 import { INewAccount } from "../../@types/interfaces";
+import { ThemeProvider } from "next-themes";
 
 interface AccountProps {
   newaccount: INewAccount;
@@ -17,7 +18,9 @@ export default function Account() {
       <Head>
         <title>Dashboard</title>
       </Head>
+      <ThemeProvider attribute="class" defaultTheme="system">
       <DashBoard />
+      </ThemeProvider>
     </>
   )
 }

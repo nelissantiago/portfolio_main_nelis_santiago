@@ -14,6 +14,7 @@ export function FrieldPage({ name, profissao, avatar, buttonCopy, href, copy }: 
         toast(copy, {
             delay: 1000,
             type: 'success',
+            className: styles.toast,
         })
     }
     

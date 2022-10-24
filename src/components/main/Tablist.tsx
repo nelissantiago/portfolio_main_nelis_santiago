@@ -13,11 +13,10 @@ export function Tablist({name, nametwo, title, pargraph, link, linktwo, titletwo
     }
 
     function HandleCopyProfile() {
-        const name = "Essa pagina não existe."
-
-      toast(name, {
+      toast("Essa pagina não existe.", {
           delay: 100,
          type: 'error',
+         className: styles.toast,
         })
     }
 

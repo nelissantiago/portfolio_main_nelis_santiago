@@ -16,7 +16,7 @@ export interface HomeProps{
     title: string;
     typerwriter: string;
     paragraph: string;
-    copy: any
+    copy?: any
 }
 
 export interface TabProps {

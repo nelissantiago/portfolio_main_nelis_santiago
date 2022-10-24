@@ -48,23 +48,12 @@ interface GetContentProps {
 export function Main() {
     const {data} = useQuery<GetContentProps>(GET_CONTENT_BY_GRAPHQL)
 
-    {data?.frieldsamigo.map(react => {
-        return (
-            react.avatar,
-            react.nomeDoUsuario,
-            react.profissao,
-            react.discordComunidade,
-            react.copiar
-        )    
-    })}
-
     const Home = [
         {
             img: 'https://github.com/slaidezera.png',
             name: 'Nelis Santiago',
             writer: '<span>Front-End Developer e Ui Designer.</span>',
             paragra: 'Olá, meu nome e Nelis Santiago, sou freelancer como Front-end developer e Ui designer, desenvolvo aplicaçoes de alto nivel concentrado em performance, detalhes e SEO.',
-            copy: HandleProfile
         }
     ]
 
@@ -165,16 +154,6 @@ export function Main() {
         },
     ]
 
-    function HandleProfile() {
-            const name = "Nelis Santiago#2022"
-            navigator.clipboard.writeText(name)
-
-        toast(name, {
-            delay: 1000,
-            type: 'success',
-            })
-    }
-
     return (
         <>
             <main className={styles.main} data-aos="fade-up">
@@ -188,7 +167,6 @@ export function Main() {
                                 title={react.name}
                                 typerwriter={react.writer}
                                 paragraph={react.paragra}   
-                                copy={react.copy}
                             />
                          </>
                         )

@@ -31,6 +31,7 @@ export function Status() {
 		toast(Copy, {
 			delay: 1000,
 			type: "success",
+			className: styles.toast,
 		})
 	}
 

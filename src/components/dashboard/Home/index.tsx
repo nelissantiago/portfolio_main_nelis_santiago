@@ -4,6 +4,7 @@ import Form from '../contact';
 import {useKeenSlider} from 'keen-slider/react';
 import "keen-slider/keen-slider.min.css";
 import Image from 'next/future/image'
+import { ThemeSwitch } from '../../utils/Darktoggle'
 
 export function DashBoard() {
   const [ sliderREF ] = useKeenSlider({
@@ -20,9 +21,12 @@ export function DashBoard() {
             <header className={styles.header}>
             <div className={styles.profile}>
               <Image src={data?.user.image} alt="" width={57} height={57} />
-              <span>Nelis Santiago</span>
+              <span>{data?.user.name}</span>
             </div>
-              <button onClick={() => signOut()}>Sair</button>
+              <div className={styles.nav}>
+                <button className={styles.button} onClick={() => signOut()}>Sair</button>
+                <div className={styles.buttonDarkToogle}><ThemeSwitch /> </div>
+              </div>
             </header>
               <section className={styles.container}>
               <div className={styles.gridContainer}>

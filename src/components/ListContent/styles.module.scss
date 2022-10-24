@@ -184,6 +184,10 @@
                 height: 100%;
                 object-fit: cover;
             }
+
+            @media (max-width: 500px) {
+              padding: 0 8px;
+          }
         }
 
         .ContentList {
@@ -197,6 +201,7 @@
                 align-items: center;
                 padding: 10px 0 0 0;
                 margin-bottom: 1rem;
+                
 
                 @media (max-width: 500px) {
                   padding: 15px 0 0 0;
@@ -221,8 +226,12 @@
                     font-size: 0.9rem;
 
                     svg {
-                      font-size: 1.154rem;
+                      font-size: 1.2rem;
                     }
+                }
+
+                @media (max-width: 500px) {
+                  line-height: 1.6;
                 }
             }
 

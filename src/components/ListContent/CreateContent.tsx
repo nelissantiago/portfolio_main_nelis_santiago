@@ -6,6 +6,7 @@ import { Loading } from "./loading";
 import { Footer } from "../footer";
 import { Date } from "../utils/CreateSVG";
 import Image from '../../../public/images/content.png'
+import { formatDate } from "./format";
 const GET_LESSON_GRAPHQL = gql`
   query GetLessonBySlug($slug: String) {
     content(where: {slug: $slug}, stage: PUBLISHED) {
@@ -55,8 +56,6 @@ export function Video({ lessonSlug }: LessonProps) {
     }
   })
 
-  console.log(data)
-
   if ((!data)) {
     return <Loading />
   } else if ((!data.content)) {
@@ -77,7 +76,7 @@ export function Video({ lessonSlug }: LessonProps) {
               <section className={styles.ContentList}>
                 <div className={styles.title}>
                   <h1>{data.content.titlecontent}</h1>
-                  <span className={styles.date}> < Date /> Publicado em {data.content.diaLancado}</span>
+                  <span className={styles.date}> < Date />{formatDate(data.content.diaLancado)}</span>
                 </div>
                   <div className={styles.list}>
                     <p>
