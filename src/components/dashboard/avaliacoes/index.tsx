@@ -22,7 +22,6 @@ export function Form({ names, avatars, emailAccount}: UsersProps) {
             const response = await Axios.post('api/pool', {
               headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
               },
                 name: names,
                 avatar: avatars,
