@@ -3,6 +3,7 @@ export const formatDate = (date: string) => {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
-    };
+    };    
+
     return new Date(date).toLocaleDateString('pt-BR', options);
 }

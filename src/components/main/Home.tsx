@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @next/next/no-img-element */
 import styles from './styles.module.scss'
-import { Discord, GitHub, Instagram, Whatsapp } from '../utils/CreateSVG'
+import { Discord, Githubb, Instagram, Whatsapp } from '../utils/CreateSVG'
 import Typewriter from 'typewriter-effect';
 import { HomeProps } from '../../@types/interfaces';
 import Image from 'next/future/image'
@@ -33,10 +33,10 @@ export function HomePage({ logoImg, title, typerwriter, paragraph }: HomeProps) 
             </p>
         </div>
         <div className={styles.links}>
-                <a href='/status' onClick={Progress}><Discord /></a>
-            <a href="https://github.com/slaidezera"><GitHub /></a>
+            <a href='/status' onClick={Progress}><Discord /></a>
             <a href="https://instagram.com/nelis_code"><Instagram /></a>
             <a href="/"><Whatsapp /></a>
+            <a href="https://github.com/slaidezera"><Githubb /></a>
         </div>   
         </>
     )

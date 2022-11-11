@@ -1,22 +1,62 @@
 /* eslint-disable react/jsx-key */
 import React from "react";
 import styles from './styles.module.scss';
-import { UsersList } from "./UsersAssessments";
+import { avaliacoesProps } from "../../@types/interfaces"
 
-export function Carousel() { 
+import 'keen-slider/keen-slider.min.css'
+import { useKeenSlider } from 'keen-slider/react' 
+
+interface Props {
+    pool: avaliacoesProps
+}
+
+export function Carousel({ pool }: Props) { 
+    const [sliderRef, instanceRef] = useKeenSlider(
+      {
+      slides: {
+          perView: 1.544,
+          spacing: 10,
+      },
+      mode: 'free-snap',
+      },
+    )
+  
   return (
     <>
-        <article className={styles.hereAssesments}>
-          <div className={styles.ContainerHere}>
-            <div className={styles.users}>
-              <UsersList />
-            </div>
-
-            <div aria-hidden="true" className={styles.users}>
-             <UsersList />
-            </div>
-          </div>
-          </article>
+                  <div className={styles.listCarousel}>
+                    <div className="keen-slider__slide" id={styles.listCarouselItem}>
+                            <div className={styles.profile}>
+                                <img src={pool.avatar} alt="" />
+                                <span>{pool.name}</span>
+                            </div>
+                            <strong>{pool.title}</strong>
+                            <p>
+                                {pool.description}
+                            </p>
+                    </div>
+                    </div>
     </>
   )
 }
+
+
+/**
+ const GET_BY_AVALIATION_GRAPH = gql`
+  query MyQuery {
+      avaliationClientes(stage: PUBLISHED, orderBy: publishedAt_ASC) {
+        conteudo
+        avatar
+        nome
+        titulo
+      }
+    }
+  `
+  interface GetAssessmentsProps {
+      avaliationClientes: {
+          conteudo: string;
+          avatar: string;
+          nome: string;
+          titulo: string;
+      }[]
+  }
+ */

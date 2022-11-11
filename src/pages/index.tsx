@@ -5,17 +5,19 @@ import { Main } from "../components/main"
 import { Footer } from "../components/footer"
 import { useEffect } from "react";
 import { Header } from "../components/header";
-import { INewAccount } from "../@types/interfaces";
 
 import Aos from 'aos'
 import 'aos/dist/aos.css'
-
-interface HomeProps {
-  newaccount: INewAccount[];
+import { avaliacoesProps } from "../@types/interfaces";
+interface Props {
+  counts: {
+    avaliacoescount: number
+    count: number
+  }
+  avaliacoes: avaliacoesProps[],
 }
 
-
-export default function Home({ newaccount }: HomeProps) {
+export default function Home(props: Props) {
   useEffect(( ) => {
     Aos.init({duration: 1000})
   })
@@ -23,27 +25,46 @@ export default function Home({ newaccount }: HomeProps) {
 
   return (
     <>
-        <div>
         <ThemeProvider attribute="class" defaultTheme="system">
           <Header />
-          <Main />
+          <Main counts={props.counts} pool={props.avaliacoes} />
           <Footer />
         </ThemeProvider>
-    </div>
     </>
   )
 }
 
+
 export const getStaticProps: GetStaticProps = async () => {
+  const avaliacoescount = await prisma.pool.count()
+  const avaliacoes = await prisma.pool.findMany()  
+  const count = await prisma.account.count()
   const newaccount = await prisma.newaccount.findMany({
     include: {
       tags: {
         include: {
-          tag: true,
+          tag: true,          
         },
       },
     },
   });
+
+
+/**
+ * 
+ * 
+ const pool = await prisma.poolUser.create({
+      data: {
+        name: 'Helloooooo',
+        email: "world",
+        pool: {
+          create: {
+            name: "Helloooo",
+          }
+        }
+      }
+  })
+ */
 
 
   const AccountMaping = newaccount.map((account) => ({
@@ -53,6 +74,11 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       account: AccountMaping,
+      avaliacoes: avaliacoes,
+      counts: {
+        count: count,
+        avaliacoescount: avaliacoescount,
+      }
     },
 
     revalidate: 86400,

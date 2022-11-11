@@ -30,7 +30,7 @@ export function SearchCreate() {
                 <main className={styles.main}>
                     <div className={styles.grid}>
                             <header className={styles.header}>
-                                <h2 className={styles.title}>Repositorios</h2>
+                                <h2 className={styles.title}>Repositorio.</h2>
                                 <div className={styles.search}>
                                 <Search />
                                     <input

@@ -6,7 +6,7 @@ import { Loading } from "./loading";
 import { Footer } from "../footer";
 import { Date } from "../utils/CreateSVG";
 import Image from '../../../public/images/content.png'
-import { formatDate } from "./format";
+import { formatDate } from "../utils/format";
 const GET_LESSON_GRAPHQL = gql`
   query GetLessonBySlug($slug: String) {
     content(where: {slug: $slug}, stage: PUBLISHED) {

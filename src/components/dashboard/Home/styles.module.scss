@@ -16,12 +16,13 @@
     .nav {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        justify-content: space-between;
+        gap: 0.8rem;
 
         .buttonDarkToogle {
-            border: solid rgba(56, 50, 50, 0.702) 1px;
-            padding: 9px 12px;
-            border-radius: 6px;
+            svg {
+                font-size: 1.8rem;
+            }
         }
     }
 
@@ -32,7 +33,10 @@
 
         img {
             border-radius: 50%;
-            width: 57px;
+            width: 63px;
+            height: 61px;
+            border: solid 2px #2256cf;
+            padding: 2px;
         }
     
         span {
@@ -45,8 +49,9 @@
 
     .button {
         background-color: rgba(255, 0, 0, 0.784);
+        color: white;
         cursor: pointer;
-        font-size: 1.1rem;
+        font-size: 1.154rem;
         padding: 9px 12px;
         border-radius: 6px;
     }

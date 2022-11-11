@@ -1,5 +1,6 @@
 import { ServicesProps } from '../../@types/interfaces'
 import styles from './styles.module.scss'
+
 export function ServicesPage({ title, paragraph, icon }: ServicesProps) {
 
     return (

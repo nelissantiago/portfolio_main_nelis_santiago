@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { toast } from 'react-toastify'
 import { FrieldsProps } from '../../@types/interfaces'
-import { GitHub, Instagram } from '../utils/CreateSVG'
+import { Githubb, Instagram } from '../utils/CreateSVG'
 import Image from 'next/future/image'
 import styles from './styles.module.scss'
 
@@ -30,11 +30,11 @@ export function FrieldPage({ name, profissao, avatar, buttonCopy, href, copy }: 
                 <button type="button" onClick={HandleProfile}>
                     {buttonCopy}
                 </button>
+                <a href="/"  className={styles.inst}>
+                    <Githubb />
+                </a>
                 <a href={href} className={styles.inst}>
                      <Instagram />
-                </a>
-                <a href="/"  className={styles.inst}>
-                    <GitHub />
                 </a>
             </div>
         </article>

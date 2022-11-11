@@ -1,19 +1,21 @@
 import styles from './styles.module.scss';
+import { Form } from '../avaliacoes';
+import { ThemeSwitch } from '../../utils/Darktoggle'
 import { signOut, useSession } from "next-auth/react";
-import Form from '../contact';
-import {useKeenSlider} from 'keen-slider/react';
+import { FragementParticles } from '../../utils/particles'
 import "keen-slider/keen-slider.min.css";
 import Image from 'next/future/image'
-import { ThemeSwitch } from '../../utils/Darktoggle'
 
 export function DashBoard() {
-  const [ sliderREF ] = useKeenSlider({
-    slides: {
-      spacing: 10,
-      perView: 2.5,
-    }
-  })
   const { data } = useSession();
+
+  const dataSession = [
+    {
+      name: data?.user.name,
+      avatar: data?.user.image,
+      emailAccount: data?.user.email
+    }
+  ]
     return (
         <>
           <main id="embed" className={styles.main}>
@@ -21,7 +23,7 @@ export function DashBoard() {
             <header className={styles.header}>
             <div className={styles.profile}>
               <Image src={data?.user.image} alt="" width={57} height={57} />
-              <span>{data?.user.name}</span>
+              <span>{data?.user.name ? data?.user.name : 'Anonimo'}</span>
             </div>
               <div className={styles.nav}>
                 <button className={styles.button} onClick={() => signOut()}>Sair</button>
@@ -31,37 +33,19 @@ export function DashBoard() {
               <section className={styles.container}>
               <div className={styles.gridContainer}>
                 <div className={styles.form}>
-                  <Form />
+                  {dataSession.map(react => {
+                    return (
+                      <>
+                        <Form names={react.name} avatars={react.avatar} emailAccount={react.emailAccount} />
+                      </>
+                    )
+                  })}
                 </div>
-             
               </div>
               </section>
             </div>
+            <FragementParticles />
           </main>
         </>
     )
 }
-
-/**
- * 
- *    <div className={styles.info}>            
-                <div className='keen-slider' ref={sliderREF}>
-                  <article className='keen-slider__slide'>
-                    <div className={styles.card}>
-                      <img src="https://github.com/slaidezera.png" alt="" />
-                    </div>
-                  </article>
-                  <article className='keen-slider__slide'>
-                    <div className={styles.card}>
-                    <img src="https://github.com/slaidezera.png" alt="" />
-                    </div>
-                  </article>
-                  <article className='keen-slider__slide'>
-                    <div className={styles.card}>
-                    <img src="https://github.com/slaidezera.png" alt="" />
-                    </div>
-                  </article>
-                </div>
-                </div>
- * 
- */

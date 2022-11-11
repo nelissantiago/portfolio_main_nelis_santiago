@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { DiscordProps } from "../../@types/interfaces";
 import { LoadingDiscord } from "./Loading";
 import { FragementParticles } from "../utils/particles";
+import { Game } from "../utils/CreateSVG";
 
 
 export function Status() {
@@ -72,7 +73,7 @@ export function Status() {
 		},
 			 Image: `https://cdn.discordapp.com/app-assets/${status?.activities[1]?.application_id}/${status?.activities[1]?.assets?.large_image}.webp?size=2048`,
 	}
-		];
+];
 
 	return (
 		<>
@@ -89,7 +90,7 @@ export function Status() {
 								</div>
 								{react.activities.state ? (
 									<div className={styles.status}>
-									<span className={styles.span}>Jogando.</span>
+									<span className={styles.span}>Jogando<Game /> </span>
 									<div className={styles.playing}>
 										<img key={react.Image} src={react.Image} alt="" width={75} height={75} />
 										<div className={styles.text}>
@@ -107,7 +108,7 @@ export function Status() {
 								</div>
 								) : (
 									<div className={styles.status}>
-									<span className={styles.span}>Jogando.</span>
+									<span className={styles.span}>Jogando<Game /> </span>
 									<div className={styles.playing}>
 										<h3>Não esta jogando...</h3>
 									</div>

@@ -1,4 +1,3 @@
-import { toast } from 'react-toastify';
 import { HomePage } from './Home';
 import { Tablist } from './Tablist';
 import { ServicesPage } from './Services';
@@ -21,7 +20,12 @@ import react from '../../../public/images/react.svg'
 import typescript from '../../../public/images/typescriptt.svg'
 import { Carousel } from './Assessments';
 import { gql, useQuery } from '@apollo/client';
+import { Created } from './created';
+import { avaliacoesProps } from '../../@types/interfaces';
 
+
+import 'keen-slider/keen-slider.min.css'
+import { useKeenSlider } from 'keen-slider/react' 
 
 const GET_CONTENT_BY_GRAPHQL = gql`
 query MyQuery {
@@ -45,8 +49,28 @@ interface GetContentProps {
     }[]
 }
 
-export function Main() {
+interface Propss {
+    pool: avaliacoesProps[],
+    counts: {
+        avaliacoescount: number
+        count: number
+    }
+}
+
+
+export function Main(props: Propss) {
     const {data} = useQuery<GetContentProps>(GET_CONTENT_BY_GRAPHQL)
+
+    const [sliderRef, instanceRef] = useKeenSlider(
+        {
+         slides: {
+            perView: 1.544,
+            spacing: 10,
+         },
+         mode: 'free-snap',
+        },
+      )
+
 
     const Home = [
         {
@@ -83,7 +107,7 @@ export function Main() {
         },
         {
             title: 'Responsivo.',
-            paragraph: 'Crio responsivos, para usuario pode acessar o site de qualquer lugar',
+            paragraph: 'Acesse o site de qualque dispositivo sem nenhum tipo de problema de layout.',
             icon: <Mobile />
         }
     ]
@@ -247,11 +271,25 @@ export function Main() {
 
                 <section className={styles.assessments}>
                     <h2>Avaliações.</h2>
-                    <div className={styles.contentAssessments}>
-                    <Carousel />
+                    <article className={styles.assessments}>
+                        <div className={styles.assessmentsContent}>
+                            <div ref={sliderRef} className="keen-slider">
+                            {props.pool.map(react => {
+                            return (
+                                <>
+                                    <Carousel pool={react} />
+                                </>
+                                )
+                            })}
+                            </div>
+                        </div>
+                    </article>
+                </section>
+                <section className={styles.count}>
+                    <div className={styles.countContent}>
+                        <Created counts={props.counts} />
                     </div>
                 </section>
-
                 <section className={styles.knowledge}>
                 <h2>Conhecimentos.</h2>
                     <div className={styles.contentKnowledge}>

@@ -6,7 +6,7 @@ import { Repos, Search } from "../utils/CreateSVG";
 import { Loading } from "./loading";
 import { FragementParticles } from "../utils/particles";
 
-const GET_LESSON_BY_GRAPH = gql`
+export const GET_LESSON_BY_GRAPH = gql`
     query GetLessons {
       contents(orderBy: publishedAt_ASC, stage: PUBLISHED) {
         id
@@ -63,7 +63,7 @@ export function SideBar() {
         <main className={styles.main}>
           <div className={styles.grid}>
             <header className={styles.header}>
-              <h2 className={styles.title}>Conteudo</h2>
+              <h2 className={styles.title}>Conteudo.</h2>
               <div className={styles.search}>
                 <Search />
                 <input  

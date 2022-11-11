@@ -30,12 +30,8 @@
   --color-text: navy;
   --color-bg: papayawhip;
   
-  --size: clamp(10rem, 1rem + 40vmin, 30rem);
-  --gap: calc(var(--size) / 14);
-  --duration: 60s;
-  --scroll-start: 0;
-  --scroll-end: calc(-100% - var(--gap));
-  --container-size: 3.5rem;
+  
+  --container-size: 2.5rem;
   --block-size: calc(var(--container-size) / 3);
   --travel-length: calc(var(--container-size) - var(--block-size));
 }
@@ -50,6 +46,7 @@ html {
 
 body {
   font-family: 'Lato', sans-serif;
+  --webkit-font-smoothing: antialiased;
 }
 
 @media screen and (max-width: 1080px) {

@@ -1,3 +1,9 @@
+.error {
+    svg {
+        color: black;
+    }
+}
+
 .form {
     display: flex;
     max-width: 680px;
@@ -5,14 +11,23 @@
     gap: 1rem;
 
     input {
-        border: solid 0.5px #222222;
+        border: solid 1px #2c2a2a;
         padding: 14px 10px; 
-        border-radius: 4px;
+        background: transparent;
+        border-radius: 4px; 
+
+
+        &:disabled {
+            font-size: 1.1rem;
+            cursor: not-allowed;
+            background-color: none;
+        }
     }
 
     textarea {
-        border: solid 0.5px #222222;
+        border: solid 1px #2c2a2a;
         padding: 14px 10px; 
+        background: transparent;
         border-radius: 4px;
         resize: none;
         height: 6rem;
@@ -23,13 +38,8 @@
         background-color: #00875F;
         padding: 14px 10px; 
         color: white;
-        cursor:  not-allowed;
         border-radius: 4px;
         font-size: 1.1rem;
-
-        &:hover {
-            filter: brightness(0.8);
-        }
     }
 
     .carac {

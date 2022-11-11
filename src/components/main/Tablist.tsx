@@ -1,4 +1,4 @@
-import { Conteudo, EBoook, Instagram, EBookAcess } from '../utils/CreateSVG'
+import { Conteudo, EBoook, Repos, EBookAcess, Content } from '../utils/CreateSVG'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { toast } from 'react-toastify';
 import { TabProps } from '../../@types/interfaces';
@@ -14,7 +14,7 @@ export function Tablist({name, nametwo, title, pargraph, link, linktwo, titletwo
 
     function HandleCopyProfile() {
       toast("Essa pagina não existe.", {
-          delay: 100,
+        delay: 100,
          type: 'error',
          className: styles.toast,
         })
@@ -34,7 +34,7 @@ export function Tablist({name, nametwo, title, pargraph, link, linktwo, titletwo
                         {pargraph}
                     </p>
                     <div className={styles.linkAcess}>
-                    <a href={link} onClick={Progress}>Acessar Conteudo <Instagram /></a>
+                    <a href={link} onClick={Progress}>Acessar Conteudo <Content /></a>
                     </div>
                     </TabPanel>
                     <TabPanel className={styles.painelList}>
@@ -43,7 +43,7 @@ export function Tablist({name, nametwo, title, pargraph, link, linktwo, titletwo
                         {pargraphtwo}
                     </p>
                     <div className={styles.linkAcess}>
-                        <button onClick={HandleCopyProfile} type="button">Acessar eBook<EBookAcess/></button>
+                        <button onClick={HandleCopyProfile} type="button">Acessar eBook<Repos/></button>
                     </div>
                 </TabPanel>
             </Tabs>

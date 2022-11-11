@@ -1,5 +1,5 @@
 import { unstable_getServerSession } from "next-auth/next";
-import { GetServerSideProps, NextPage } from "next";
+import { GetServerSideProps } from "next";
 import Head from "next/head";
 
 import { prisma } from '../../lib/prisma'
@@ -33,6 +33,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     authOptions
   );
 
+
   if (!session) {
     return {
       redirect: {
@@ -62,6 +63,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       newaccount,
+
     },
   };
 };
