@@ -19,7 +19,7 @@ export function Form({ names, avatars, emailAccount}: UsersProps) {
         event.preventDefault()
         
         try {
-            const response = await Axios.post('api', {
+            const response = await Axios.post('api/pool', {
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
