@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse} from 'next'
 import { prisma } from "../../../lib/prisma";
 
-  async function Pool(req: NextApiRequest, res: NextApiResponse) {
+export default async function Pool(req: NextApiRequest, res: NextApiResponse) {
     const { name, avatar, title, emailAccount, description } = req.body
 
     try {
-      await prisma.pool.create({
+    const pool = await prisma.pool.create({
           data: {
               name: name,
               avatar: avatar,
@@ -14,11 +14,10 @@ import { prisma } from "../../../lib/prisma";
               description: description,
           }
        })
+
+       return res.json(pool)
+       
     } catch {
-       res.status(200).redirect('/')
+       res.redirect('/')
     }
-
-    return res.status(200).redirect('/')
 }
-
-export default Pool
