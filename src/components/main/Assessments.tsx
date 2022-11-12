@@ -25,7 +25,7 @@ export function Carousel({ pool }: Props) {
     <>
                   <div className={styles.listCarousel}>
                     <div className="keen-slider__slide" id={styles.listCarouselItem}>
-                            {pool.createdAt  ? (
+                            {pool ? (
                               <>
                                 <div className={styles.profile}>
                             <img src={pool.avatar} alt="" />
@@ -34,7 +34,6 @@ export function Carousel({ pool }: Props) {
                             <strong>{pool.title}</strong>
                             <p>
                                 {pool.description}
-                                {pool.createdAt[0]}
                             </p>
                               </>
                             ) : (
@@ -46,7 +45,6 @@ export function Carousel({ pool }: Props) {
                             <strong>{pool.title}</strong>
                             <p>
                                 {pool.description}
-                                {pool.createdAt[0]}
                             </p>
                               </>
                             )}
