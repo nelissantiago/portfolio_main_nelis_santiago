@@ -5,21 +5,23 @@ import Head from "next/head";
 import { prisma } from '../../lib/prisma'
 import { DashBoard } from "../../components/dashboard/Home";
 import { authOptions } from "../api/auth/[...nextauth]";
-import { INewAccount } from "../../@types/interfaces";
+import { avaliacoesProps } from "../../@types/interfaces";
 import { ThemeProvider } from "next-themes";
 
 interface AccountProps {
-  newaccount: INewAccount;
+  pool: avaliacoesProps
 }
 
-export default function Account() {
+
+
+export default function Account(props: AccountProps) {
   return (
     <>
       <Head>
         <title>Dashboard</title>
       </Head>
       <ThemeProvider attribute="class" defaultTheme="system">
-      <DashBoard />
+      <DashBoard pool={props.pool} />
       </ThemeProvider>
     </>
   )
@@ -60,10 +62,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
   }
 
+  const pool = await prisma.pool.findMany()
+
   return {
     props: {
       newaccount,
-
+      pool: pool,
     },
   };
 };

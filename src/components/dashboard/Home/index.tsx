@@ -5,17 +5,27 @@ import { signOut, useSession } from "next-auth/react";
 import { FragementParticles } from '../../utils/particles'
 import "keen-slider/keen-slider.min.css";
 import Image from 'next/future/image'
+import { avaliacoesProps } from '../../../@types/interfaces';
 
-export function DashBoard() {
+
+interface Props{
+  pool: avaliacoesProps
+}
+
+export function DashBoard({pool}: Props) {
   const { data } = useSession();
 
+  
   const dataSession = [
     {
       name: data?.user.name,
       avatar: data?.user.image,
-      emailAccount: data?.user.email
-    }
+      emailAccount: data?.user.email,
+    },
+    
   ]
+
+  
     return (
         <>
           <main id="embed" className={styles.main}>
@@ -33,10 +43,15 @@ export function DashBoard() {
               <section className={styles.container}>
               <div className={styles.gridContainer}>
                 <div className={styles.form}>
-                  {dataSession.map(react => {
+                  {dataSession.map(reactt => {
                     return (
                       <>
-                        <Form names={react.name} avatars={react.avatar} emailAccount={react.emailAccount} />
+                              <Form
+                              names={reactt.name}
+                              avatars={reactt.avatar}
+                              emailAccount={reactt.emailAccount}
+                              pool={pool}
+                              />
                       </>
                     )
                   })}

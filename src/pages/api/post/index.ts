@@ -15,9 +15,9 @@ export default async function Pool(req: NextApiRequest, res: NextApiResponse) {
           }
        })
 
-       return res.json(pool)
+        res.json(pool)
        
     } catch {
-       res.redirect('/')
+       res.status(200).redirect('/')
     }
 }

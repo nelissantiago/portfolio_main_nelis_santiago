@@ -1,4 +1,4 @@
-import type { GetStaticProps } from "next";
+import type { GetStaticProps, GetServerSideProps  } from "next";
 import { ThemeProvider } from "next-themes";
 import { prisma } from '../lib/prisma'
 import { Main } from "../components/main"
@@ -35,7 +35,7 @@ export default function Home(props: Props) {
 }
 
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps  = async () => {
   const avaliacoescount = await prisma.pool.count()
   const avaliacoes = await prisma.pool.findMany()  
   const count = await prisma.account.count()
@@ -49,39 +49,19 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   });
 
-
-/**
- * 
- * 
- const pool = await prisma.poolUser.create({
-      data: {
-        name: 'Helloooooo',
-        email: "world",
-        pool: {
-          create: {
-            name: "Helloooo",
-          }
-        }
-      }
-  })
- */
-
-
   const AccountMaping = newaccount.map((account) => ({
     ...account.tags.map(tag => tag.tag.name)
   }));
 
   return {
     props: {
-      account: AccountMaping,
-      avaliacoes: avaliacoes,
       counts: {
-        count: count,
-        avaliacoescount: avaliacoescount,
-      }
+        avaliacoescount,
+        count,
+      },
+      avaliacoes,
+      AccountMaping,
     },
-
-    revalidate: 86400,
   };
 };
 

@@ -2,14 +2,17 @@ import { useState, FormEvent } from 'react';
 import { toast } from 'react-toastify';
 import styles from './styles.module.scss'
 import { Axios } from '../../../lib/axios'
+import { avaliacoesProps } from '../../../@types/interfaces';
 
 interface UsersProps {
   names: string;
   avatars: string;
   emailAccount: string;
+  pool: avaliacoesProps
 }
 
-export function Form({ names, avatars, emailAccount}: UsersProps) {
+
+export function Form({ names, avatars, emailAccount, pool }: UsersProps) {
   const [name, SetName] = useState('')
   const [title, SetTitle] = useState('')
   const [disability, SetDisability] = useState(false)
@@ -19,44 +22,42 @@ export function Form({ names, avatars, emailAccount}: UsersProps) {
         event.preventDefault()
         
         try {
-            const response = await Axios.post('api/post', {
-                
+            const response = await Axios.post('/post', {
+                headers: {
+                  'Content-Type': 'application/json',
+                },
                   name: names,
                   avatar: avatars,
                   title: title,
                   emailAccount: emailAccount,
                   description: description,
                 
-         })
-            
-            const data = await response.data
+         })         
+            const data = response.data
 
+            if(pool.emailAccount === data.emailAccount && pool.title === data.title) {
+              toast.error('Voce ja fez uma avaliação.')
+            } else {
+              toast.success('Avaliação enviada com sucesso')
+            }
+      
             SetName('')
             SetTitle('')
             SetDescription('')
             SetDisability(false)
 
+            } catch {
+                toast('Tente Novamente Mais Tarde!!', {
+                  type: 'error',
+                  className: styles.error,
+                  delay: 500,
+                })
 
-
-            toast('Avaliação enviada com sucesso!', {
-              type: 'success',
-              className: styles.error,
-              delay: 500,
-            })
-            
-        } catch {
-            toast('Tente Novamente Mais Tarde!!', {
-              type: 'error',
-              className: styles.error,
-              delay: 500,
-            })
-
-            SetName('')
-            SetTitle('')
-            SetDescription('')
-            SetDisability(false)
-        }
-    }
+                SetName('')
+                SetTitle('')
+                SetDescription('')
+                SetDisability(false)
+          }}
 
   return (
     <>
