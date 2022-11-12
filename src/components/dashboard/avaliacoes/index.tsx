@@ -27,7 +27,7 @@ export function Form({ names, avatars, emailAccount, pool }: UsersProps) {
                   title: title,
                   emailAccount: emailAccount,
                   description: description,
-                  createdAt: new Date()
+                  createdAt: new Date,
                 
          })         
          

@@ -42,7 +42,6 @@ export const getServerSideProps: GetServerSideProps  = async () => {
     orderBy: {
       createdAt: 'desc'
     },
-    take: 3
   })
 
 

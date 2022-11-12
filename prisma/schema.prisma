@@ -97,7 +97,6 @@ model Pool {
   emailAccount String @unique  @default("aninimo.web@gmail.com")
   title      String
   description String
-
   createdAt DateTime @default(now())
 
   @@map("pool")

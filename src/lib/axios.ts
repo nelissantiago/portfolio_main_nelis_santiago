@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const Axios = axios.create({
-    baseURL: "https://www.nelissantiago.com.br/api",
+    baseURL: "http://localhost:3000/api",
 });

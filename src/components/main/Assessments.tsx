@@ -20,7 +20,12 @@ export function Carousel({ pool }: Props) {
       mode: 'free-snap',
       },
     )
+
+    console.log(pool.createdAt)
+
+
   
+    console.log(pool.createdAt > pool.createdAt )
   return (
     <>
                   <div className={styles.listCarousel}>
@@ -38,14 +43,7 @@ export function Carousel({ pool }: Props) {
                               </>
                             ) : (
                               <>
-                                <div className={styles.profile}>
-                            <img src={pool.avatar} alt="" />
-                                <span>{pool.name}</span>
-                            </div>
-                            <strong>{pool.title}</strong>
-                            <p>
-                                {pool.description}
-                            </p>
+                                
                               </>
                             )}
                     </div>

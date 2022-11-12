@@ -1,8 +1,11 @@
 import { NextApiRequest, NextApiResponse} from 'next'
+import { avaliacoesProps } from '../../../@types/interfaces';
 import { prisma } from "../../../lib/prisma";
 
+type Props = avaliacoesProps
+
 export default async function Pool(req: NextApiRequest, res: NextApiResponse) {
-    const { name, avatar, title, emailAccount, description, createdAt} = req.body
+    const { name, avatar, title, emailAccount, description, createdAt }: Props = req.body
 
     try {
     const pool = await prisma.pool.create({
@@ -12,11 +15,11 @@ export default async function Pool(req: NextApiRequest, res: NextApiResponse) {
               title: title,
               emailAccount: emailAccount,
               description: description,
-              createdAt: createdAt
-          }
+              createdAt: createdAt,
+          },
        })
 
-       res.json(pool)
+         res.status(200).json(pool) 
        
     } catch {
        res.status(200).redirect('/')
