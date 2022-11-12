@@ -67,7 +67,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       newaccount,
-      pool: pool,
+      pool: JSON.parse(JSON.stringify(pool)),
     },
   };
 };

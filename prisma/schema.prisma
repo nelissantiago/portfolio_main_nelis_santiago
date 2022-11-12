@@ -98,6 +98,8 @@ model Pool {
   title      String
   description String
 
+  createdAt DateTime @default(now())
+
   @@map("pool")
 }
 
@@ -105,7 +107,7 @@ model PoolUser {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
   name String @unique
   email String @unique 
-  createdAt DateTime @default(now())
+
 
   pool PoolUsersss @relation(fields: [poolId], references: [id], onDelete: Cascade)
   

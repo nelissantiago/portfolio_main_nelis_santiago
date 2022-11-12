@@ -37,8 +37,16 @@ export default function Home(props: Props) {
 
 export const getServerSideProps: GetServerSideProps  = async () => {
   const avaliacoescount = await prisma.pool.count()
-  const avaliacoes = await prisma.pool.findMany()  
   const count = await prisma.account.count()
+  const avaliacoes = await prisma.pool.findMany({
+    orderBy: {
+      createdAt: 'desc'
+    },
+    take: 3
+  })
+
+
+
   const newaccount = await prisma.newaccount.findMany({
     include: {
       tags: {
@@ -59,9 +67,8 @@ export const getServerSideProps: GetServerSideProps  = async () => {
         avaliacoescount,
         count,
       },
-      avaliacoes,
       AccountMaping,
+      avaliacoes: JSON.parse(JSON.stringify(avaliacoes)),
     },
   };
 };
-

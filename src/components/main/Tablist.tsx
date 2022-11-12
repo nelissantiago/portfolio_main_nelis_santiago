@@ -16,7 +16,7 @@ export function Tablist({name, nametwo, title, pargraph, link, linktwo, titletwo
       toast("Essa pagina não existe.", {
         delay: 100,
          type: 'error',
-         className: styles.toast,
+         className: styles.toastr,
         })
     }
 

@@ -25,14 +25,31 @@ export function Carousel({ pool }: Props) {
     <>
                   <div className={styles.listCarousel}>
                     <div className="keen-slider__slide" id={styles.listCarouselItem}>
-                            <div className={styles.profile}>
-                                <img src={pool.avatar} alt="" />
+                            {pool.createdAt  ? (
+                              <>
+                                <div className={styles.profile}>
+                            <img src={pool.avatar} alt="" />
                                 <span>{pool.name}</span>
                             </div>
                             <strong>{pool.title}</strong>
                             <p>
                                 {pool.description}
+                                {pool.createdAt[0]}
                             </p>
+                              </>
+                            ) : (
+                              <>
+                                <div className={styles.profile}>
+                            <img src={pool.avatar} alt="" />
+                                <span>{pool.name}</span>
+                            </div>
+                            <strong>{pool.title}</strong>
+                            <p>
+                                {pool.description}
+                                {pool.createdAt[0]}
+                            </p>
+                              </>
+                            )}
                     </div>
                     </div>
     </>

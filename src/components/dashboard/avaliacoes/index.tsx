@@ -3,7 +3,6 @@ import { toast } from 'react-toastify';
 import styles from './styles.module.scss'
 import { Axios } from '../../../lib/axios'
 import { avaliacoesProps } from '../../../@types/interfaces';
-
 interface UsersProps {
   names: string;
   avatars: string;
@@ -23,22 +22,27 @@ export function Form({ names, avatars, emailAccount, pool }: UsersProps) {
         
         try {
             const response = await Axios.post('/post', {
-                headers: {
-                  'Content-Type': 'application/json',
-                },
                   name: names,
                   avatar: avatars,
                   title: title,
                   emailAccount: emailAccount,
                   description: description,
+                  createdAt: new Date()
                 
          })         
+         
             const data = response.data
 
             if(pool.emailAccount === data.emailAccount && pool.title === data.title) {
-              toast.error('Voce ja fez uma avaliação.')
+              toast.error('Voce ja fez uma avaliação.', {
+                className: styles.toastr,
+                delay: 500,
+              })
             } else {
-              toast.success('Avaliação enviada com sucesso')
+              toast.success('Avaliação enviada com sucesso', {
+                className: styles.toastr,
+                delay: 500,
+              })
             }
       
             SetName('')

@@ -10,6 +10,7 @@ import { avaliacoesProps } from '../../../@types/interfaces';
 
 interface Props{
   pool: avaliacoesProps
+  
 }
 
 export function DashBoard({pool}: Props) {
