@@ -28,22 +28,22 @@ export default function Account(props: AccountProps) {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-
+  
   const session = await unstable_getServerSession(
     context.req,
     context.res,
     authOptions
-  );
+    )
 
-
-  if (!session) {
+  if(!session) {
     return {
       redirect: {
-        destination: "/",
+        destination: '/',
         permanent: false,
-      },
-    };
+      }
+    }
   }
+
 
   const { slug } = context.params as { slug: string };
 

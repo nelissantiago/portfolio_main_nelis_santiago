@@ -18,3 +18,21 @@ export const authOptions: NextAuthOptions = {
   }
 
 export default NextAuth(authOptions);
+
+
+/**
+ * import GoogleProvider from "next-auth/providers/google";
+ * 
+ *     GoogleProvider({
+        clientId: process.env.GOOGLE_CLIENT,
+        clientSecret: process.env.GOOGLE_SECRET,
+        authorization: {
+          params: {
+            prompt: "consent",
+            acess_type: "offline",
+            response_type: "code",
+          }
+        }
+      }),
+
+ */

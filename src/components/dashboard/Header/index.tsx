@@ -6,6 +6,7 @@ import { signIn, useSession } from 'next-auth/react';
 export function HeaderAvatarProfile() {
   const { status } = useSession()
 
+
   return (
     <>
        {status === 'authenticated' ? (

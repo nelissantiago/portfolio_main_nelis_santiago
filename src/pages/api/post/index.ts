@@ -20,8 +20,19 @@ export default async function Pool(req: NextApiRequest, res: NextApiResponse) {
        })
 
          res.status(200).json(pool) 
-       
+
+        
     } catch {
-       res.status(200).redirect('/')
+        
+       const pool = await prisma.pool.findMany({
+        select: {
+            name: true,
+            title: true,
+            description: true,
+        }
+       })
+
+
+       res.status(200).json(pool)
     }
 }

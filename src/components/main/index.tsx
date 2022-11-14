@@ -50,13 +50,12 @@ interface GetContentProps {
 }
 
 interface Propss {
-    pool: avaliacoesProps[],
+    avaliacoes: avaliacoesProps[],
     counts: {
         avaliacoescount: number
         count: number
     }
 }
-
 
 export function Main(props: Propss) {
     const {data} = useQuery<GetContentProps>(GET_CONTENT_BY_GRAPHQL)
@@ -274,10 +273,10 @@ export function Main(props: Propss) {
                     <article className={styles.assessments}>
                         <div className={styles.assessmentsContent}>
                             <div ref={sliderRef} className="keen-slider">
-                            {props.pool.map(react => {
+                            {props.avaliacoes.map(react => {
                             return (
                                 <>
-                                    <Carousel pool={react} />
+                                    <Carousel pool={react} key={react.id} />
                                 </>
                                 )
                             })}
@@ -312,3 +311,4 @@ export function Main(props: Propss) {
         </>
     )
 }
+

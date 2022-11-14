@@ -21,11 +21,6 @@ export function Carousel({ pool }: Props) {
       },
     )
 
-    console.log(pool.createdAt)
-
-
-  
-    console.log(pool.createdAt > pool.createdAt )
   return (
     <>
                   <div className={styles.listCarousel}>

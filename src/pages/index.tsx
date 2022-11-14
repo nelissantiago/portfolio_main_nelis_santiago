@@ -1,4 +1,4 @@
-import type { GetStaticProps, GetServerSideProps  } from "next";
+import type { GetStaticProps  } from "next";
 import { ThemeProvider } from "next-themes";
 import { prisma } from '../lib/prisma'
 import { Main } from "../components/main"
@@ -22,12 +22,11 @@ export default function Home(props: Props) {
     Aos.init({duration: 1000})
   })
 
-
   return (
     <>
         <ThemeProvider attribute="class" defaultTheme="system">
           <Header />
-          <Main counts={props.counts} pool={props.avaliacoes} />
+          <Main counts={props.counts} avaliacoes={props.avaliacoes}  />
           <Footer />
         </ThemeProvider>
     </>
@@ -35,16 +34,16 @@ export default function Home(props: Props) {
 }
 
 
-export const getServerSideProps: GetServerSideProps  = async () => {
+export const getStaticProps: GetStaticProps  = async () => {
   const avaliacoescount = await prisma.pool.count()
   const count = await prisma.account.count()
   const avaliacoes = await prisma.pool.findMany({
     orderBy: {
-      createdAt: 'desc'
+      createdAt: 'desc',
     },
   })
 
-
+  
 
   const newaccount = await prisma.newaccount.findMany({
     include: {
@@ -69,5 +68,6 @@ export const getServerSideProps: GetServerSideProps  = async () => {
       AccountMaping,
       avaliacoes: JSON.parse(JSON.stringify(avaliacoes)),
     },
+    revalidate: 1,
   };
 };
