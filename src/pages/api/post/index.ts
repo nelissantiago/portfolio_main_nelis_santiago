@@ -4,35 +4,54 @@ import { prisma } from "../../../lib/prisma";
 
 type Props = avaliacoesProps
 
+
 export default async function Pool(req: NextApiRequest, res: NextApiResponse) {
-    const { name, avatar, title, emailAccount, description, createdAt }: Props = req.body
+    const { 
+        title,
+        description,
+        avatar,
+        createdAt,
+        userpool,
+    }: Props = req.body
 
     try {
     const pool = await prisma.pool.create({
           data: {
-              name: name,
-              avatar: avatar,
-              title: title,
-              emailAccount: emailAccount,
-              description: description,
-              createdAt: createdAt,
+             title: title,
+             description: description,
+             avatar: avatar,
+             createdAt: createdAt,
+             userpool: {
+                create: {
+                    name: userpool.name,
+                    email: userpool.email,
+                }
+             }
           },
+          select: {
+            title: true,
+            description: true,
+            avatar: true,
+            createdAt: true,
+            userpoolId: false,
+            id: false,
+            userpool: {
+                select: {
+                    name: true,
+                    email: true,
+                }
+            }
+          }
        })
 
          res.status(200).json(pool) 
 
         
     } catch {
-        
-       const pool = await prisma.pool.findMany({
-        select: {
-            name: true,
-            title: true,
-            description: true,
+        if(userpool ) {
+            res.status(200).json({error: 'You already made a review'})
+        } else {
+            res.status(200).redirect('/')
         }
-       })
-
-
-       res.status(200).json(pool)
     }
 }

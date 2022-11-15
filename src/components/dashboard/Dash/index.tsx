@@ -1,10 +1,10 @@
-import { Newaccount } from "@prisma/client";
+import { SlugCreate } from "@prisma/client";
 import Link from "next/link";
 
 
 
 interface ChallengeProps {
-  newaccount: Newaccount;
+  newaccount: SlugCreate;
 }[]
 
 export function Challenge({ newaccount }: ChallengeProps) {

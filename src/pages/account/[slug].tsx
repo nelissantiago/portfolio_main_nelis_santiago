@@ -47,7 +47,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const { slug } = context.params as { slug: string };
 
-  const newaccount = await prisma.newaccount.findUnique({
+  const newaccount = await prisma.slugCreate.findUnique({
     where: {
       slug,
     },
@@ -62,7 +62,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
   }
 
-  const pool = await prisma.pool.findMany()
+  const pool = await prisma.pool.findMany({
+    select: {
+      userpool: {
+        select: {
+          name: true,
+          email: true,
+        }
+      },
+    }
+  })
 
   return {
     props: {

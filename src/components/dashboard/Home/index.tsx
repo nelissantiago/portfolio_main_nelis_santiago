@@ -9,7 +9,7 @@ import { avaliacoesProps } from '../../../@types/interfaces';
 
 
 interface Props{
-  pool: avaliacoesProps
+  pool: avaliacoesProps 
   
 }
 
@@ -25,6 +25,8 @@ export function DashBoard({pool}: Props) {
     },
     
   ]
+
+  console.log(pool)
 
   
     return (
@@ -48,9 +50,9 @@ export function DashBoard({pool}: Props) {
                     return (
                       <>
                               <Form
-                              names={reactt.name}
-                              avatars={reactt.avatar}
-                              emailAccount={reactt.emailAccount}
+                              name={reactt.name}
+                              avatar={reactt.avatar}
+                              email={reactt.emailAccount}
                               pool={pool}
                               />
                       </>

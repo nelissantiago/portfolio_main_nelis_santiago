@@ -4,15 +4,14 @@ import styles from './styles.module.scss'
 import { Axios } from '../../../lib/axios'
 import { avaliacoesProps } from '../../../@types/interfaces';
 interface UsersProps {
-  names: string;
-  avatars: string;
-  emailAccount: string;
+  name: string;
+  avatar: string;
+  email: string;
   pool: avaliacoesProps
 }
 
 
-export function Form({ names, avatars, emailAccount, pool }: UsersProps) {
-  const [name, SetName] = useState('')
+export function Form({ name, avatar, email, pool }: UsersProps) {
   const [title, SetTitle] = useState('')
   const [disability, SetDisability] = useState(false)
   const [description, SetDescription] = useState('')
@@ -22,30 +21,23 @@ export function Form({ names, avatars, emailAccount, pool }: UsersProps) {
         
         try {
             const response = await Axios.post('/post', {
-                  name: names,
-                  avatar: avatars,
-                  title: title,
-                  emailAccount: emailAccount,
-                  description: description,
-                  createdAt: new Date,
-                
+              title: title,
+              description: description,
+              avatar: avatar,
+              createdAt: new Date(),
+              userpool: {
+                name: name,
+                email: email
+              }
          })         
-         
-            const data = response.data
 
-            if(pool.emailAccount === data.emailAccount && pool.title === data.title) {
-              toast.error('Voce ja fez uma avaliação.', {
-                className: styles.toastr,
-                delay: 500,
-              })
-            } else {
-              toast.success('Avaliação enviada com sucesso', {
-                className: styles.toastr,
-                delay: 500,
-              })
-            }
-      
-            SetName('')
+         if(pool.userpool === response.data.userpool) {
+          toast.error('Você já postou uma avaliação')
+         } else {
+          toast.success('Postado com sucesso')
+          }
+
+          
             SetTitle('')
             SetDescription('')
             SetDisability(false)
@@ -57,7 +49,7 @@ export function Form({ names, avatars, emailAccount, pool }: UsersProps) {
                   delay: 500,
                 })
 
-                SetName('')
+                
                 SetTitle('')
                 SetDescription('')
                 SetDisability(false)
@@ -67,9 +59,8 @@ export function Form({ names, avatars, emailAccount, pool }: UsersProps) {
     <>
     <form onSubmit={HandleForm} className={styles.form}>
       <input
-        placeholder={names === undefined ? 'Anonimo' : names}
+        placeholder={name === undefined ? 'Anonimo' : name}
         //value={name}
-        onChange={event => SetName(event.target.value)}
         type="text"
         maxLength={14}
         disabled

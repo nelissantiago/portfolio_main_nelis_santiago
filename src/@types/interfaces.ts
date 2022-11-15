@@ -1,6 +1,6 @@
 import { StaticImageData } from "next/image";
 import uuuid from 'uuid'
-import { Newaccount, Tag, Pool} from "@prisma/client";
+import { SlugCreate, Tag, Pool, UserPool} from "@prisma/client";
 
 export interface FrieldsProps {
     name: string;
@@ -11,8 +11,11 @@ export interface FrieldsProps {
     copy: any
 }
 
+export type UserPost = UserPool                                                                  
+export type avaliacoesProps = Pool & {
+  userpool: UserPool
+}
 
-export type avaliacoesProps = Pool
 export interface HomeProps{
     logoImg: string;
     title: string;
@@ -88,7 +91,7 @@ export interface DiscordProps {
 
 
 export type ITag = Tag;
-export type INewAccount = Newaccount & {
+export type INewAccount = SlugCreate & {
   tags: ITag[];
 };
 

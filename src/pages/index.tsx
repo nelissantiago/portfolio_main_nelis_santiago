@@ -8,13 +8,14 @@ import { Header } from "../components/header";
 
 import Aos from 'aos'
 import 'aos/dist/aos.css'
-import { avaliacoesProps } from "../@types/interfaces";
+import { avaliacoesProps, UserPost } from "../@types/interfaces";
 interface Props {
   counts: {
     avaliacoescount: number
     count: number
   }
   avaliacoes: avaliacoesProps[],
+  userPool: UserPost[]
 }
 
 export default function Home(props: Props) {
@@ -39,13 +40,26 @@ export const getStaticProps: GetStaticProps  = async () => {
   const count = await prisma.account.count()
   const avaliacoes = await prisma.pool.findMany({
     orderBy: {
-      createdAt: 'desc',
+      createdAt: 'desc'
     },
+    select: {
+      userpool: {
+        select: {
+          name: true,
+          email: true,
+        }
+      },
+      title: true,
+      description: true,
+      avatar: true,
+      createdAt: true,
+      
+    }
   })
 
   
 
-  const newaccount = await prisma.newaccount.findMany({
+  const newaccount = await prisma.slugCreate.findMany({
     include: {
       tags: {
         include: {
@@ -59,6 +73,8 @@ export const getStaticProps: GetStaticProps  = async () => {
     ...account.tags.map(tag => tag.tag.name)
   }));
 
+ 
+
   return {
     props: {
       counts: {
@@ -68,6 +84,6 @@ export const getStaticProps: GetStaticProps  = async () => {
       AccountMaping,
       avaliacoes: JSON.parse(JSON.stringify(avaliacoes)),
     },
-    revalidate: 1,
+    revalidate: 5,
   };
 };

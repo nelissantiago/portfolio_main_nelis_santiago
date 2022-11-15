@@ -7,7 +7,7 @@ import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react' 
 
 interface Props {
-    pool: avaliacoesProps
+    pool: avaliacoesProps 
 }
 
 export function Carousel({ pool }: Props) { 
@@ -21,6 +21,9 @@ export function Carousel({ pool }: Props) {
       },
     )
 
+
+    
+    
   return (
     <>
                   <div className={styles.listCarousel}>
@@ -29,7 +32,7 @@ export function Carousel({ pool }: Props) {
                               <>
                                 <div className={styles.profile}>
                             <img src={pool.avatar} alt="" />
-                                <span>{pool.name}</span>
+                                <span>{pool.userpool.name}</span>
                             </div>
                             <strong>{pool.title}</strong>
                             <p>

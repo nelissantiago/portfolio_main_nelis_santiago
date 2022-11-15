@@ -51,6 +51,7 @@ interface GetContentProps {
 
 interface Propss {
     avaliacoes: avaliacoesProps[],
+
     counts: {
         avaliacoescount: number
         count: number
@@ -59,6 +60,9 @@ interface Propss {
 
 export function Main(props: Propss) {
     const {data} = useQuery<GetContentProps>(GET_CONTENT_BY_GRAPHQL)
+
+
+    console.log(props.avaliacoes)
 
     const [sliderRef, instanceRef] = useKeenSlider(
         {

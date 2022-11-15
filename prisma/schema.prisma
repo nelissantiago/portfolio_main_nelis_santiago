@@ -58,13 +58,11 @@ model VerificationToken {
   @@unique([identifier, token])
   @@map("verificationtokens")
 }
-model Newaccount {
+model SlugCreate {
   id          String @id @default(auto()) @map("_id") @db.ObjectId
   slug        String @unique
-  title      String
-  description String
   embedId String
-  tags ChallengeTags[]
+  tags TagsLogs[]
   
   @@map("newaccounts")
 }
@@ -73,14 +71,14 @@ model Tag {
   id         String          @id @default(auto()) @map("_id") @db.ObjectId
   name       String          @unique
   slug       String          @unique
-  newaccounts ChallengeTags[]
+  newaccounts TagsLogs[]
 
   @@map("tags")
 }
 
-model ChallengeTags {
+model TagsLogs {
   id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  NewAccount   Newaccount @relation(fields: [challengeId], references: [id])
+  NewAccount   SlugCreate @relation(fields: [challengeId], references: [id])
   challengeId String    @db.ObjectId
   tag         Tag       @relation(fields: [tagId], references: [id])
   tagId       String    @db.ObjectId
@@ -89,36 +87,25 @@ model ChallengeTags {
 }
 
 
+model UserPool {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  name String 
+  email String @unique
+
+  pool Pool[]
+
+  @@map("userpool")
+}
 
 model Pool {
   id          String @id @default(auto()) @map("_id") @db.ObjectId
-  name        String @unique @default("Aninimo")
-  avatar      String @default("https://github.com/slaidezera.png")
-  emailAccount String @unique  @default("aninimo.web@gmail.com")
+  avatar      String 
   title      String
   description String
   createdAt DateTime @default(now())
+  userpoolId String 
+
+  userpool UserPool @relation(fields: [userpoolId], references: [id])
 
   @@map("pool")
-}
-
-model PoolUser {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  name String @unique
-  email String @unique 
-
-
-  pool PoolUsersss @relation(fields: [poolId], references: [id], onDelete: Cascade)
-  
-  poolId String @db.ObjectId
-
-  @@unique([poolId, email])
-  @@map("pooluser")
-}
-
-model PoolUsersss {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  name String
-
-  pool PoolUser[]
 }
