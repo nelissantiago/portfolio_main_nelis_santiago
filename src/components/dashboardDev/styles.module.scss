@@ -154,7 +154,6 @@
                         border: 1px solid #d7d7d7;
                         border-radius: 0.25rem;
                         padding: 1.5rem 1rem;
-                        text-transform: capitalize;
                         background: transparent;
                         font-size: 1.154rem;
 
@@ -197,13 +196,6 @@
                             filter: brightness(0.9);
                         }
                     }
-                }
-
-                .lengthDescription {
-                    display: flex;
-                    justify-content: flex-end;
-                    font-size: 1.154rem;
-                    color: #737380;
                 }
             }
 

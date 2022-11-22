@@ -1,13 +1,21 @@
 /* eslint-disable react/jsx-key */
 import React from "react";
 import styles from './styles.module.scss';
-import { avaliacoesProps } from "../../@types/interfaces"
 
 import 'keen-slider/keen-slider.min.css'
 import { useKeenSlider } from 'keen-slider/react' 
+import { Nota } from "../utils/CreateSVG";
 
 interface Props {
-    pool: avaliacoesProps 
+    pool: {
+        title: string,
+        nota: number,
+        description: string,
+        avatar: string,
+        userpool: {
+            name: string,
+        }
+    }
 }
 
 export function Carousel({ pool }: Props) { 
@@ -21,30 +29,47 @@ export function Carousel({ pool }: Props) {
       },
     )
 
-
-    
+    const nota = [
+      {
+        nota: 
+        pool.nota  === 1 && <><Nota/></> || 
+        pool.nota === 2 && <><Nota/><Nota/></> || 
+        pool.nota === 3 && <><Nota/><Nota/><Nota/></> ||
+         pool.nota === 4 && <><Nota/><Nota/><Nota/><Nota/></> || 
+         pool.nota === 5 && <><Nota/><Nota/><Nota/><Nota/><Nota/></> ,
+      }
+    ]
     
   return (
     <>
                   <div className={styles.listCarousel}>
-                    <div className="keen-slider__slide" id={styles.listCarouselItem}>
-                            {pool ? (
-                              <>
-                                <div className={styles.profile}>
-                            <img src={pool.avatar} alt="" />
-                                <span>{pool.userpool.name}</span>
-                            </div>
-                            <strong>{pool.title}</strong>
-                            <p>
+                      <div className="keen-slider__slide" id={styles.listCarouselItem}>
+                              {pool ? (
+                                <>
+                                  <div className={styles.profile}>
+                              <img src={pool.avatar} alt="" />
+                                  <span>{pool.userpool.name}</span>
+                                  <span className={styles.nota}>
+                                    {nota.map(react => {
+                                      return (
+                                        <>
+                                          {react.nota}
+                                        </>
+                                      )
+                                    })}
+                                  </span>
+                              </div>
+                              <strong>{pool.title}</strong>
+                              <p>
                                 {pool.description}
-                            </p>
-                              </>
-                            ) : (
-                              <>
-                                
-                              </>
-                            )}
-                    </div>
+                              </p>
+                                </>
+                              ) : (
+                                <>
+                                  
+                                </>
+                              )}  
+                      </div>
                     </div>
     </>
   )

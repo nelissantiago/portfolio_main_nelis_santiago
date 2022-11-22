@@ -45,6 +45,8 @@ model User {
 
   accounts      Account[]
   sessions      Session[]
+  pool Pool[]
+  discord Discord[] 
 
   @@map("users")
 }
@@ -85,27 +87,29 @@ model TagsLogs {
 
   @@map("challengeTags")
 }
-
-
-model UserPool {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
-  name String 
-  email String @unique
-
-  pool Pool[]
-
-  @@map("userpool")
-}
-
 model Pool {
   id          String @id @default(auto()) @map("_id") @db.ObjectId
   avatar      String 
   title      String
+  nota      Int 
   description String
   createdAt DateTime @default(now())
-  userpoolId String 
+  userpoolId String @unique
 
-  userpool UserPool @relation(fields: [userpoolId], references: [id])
+  userpool User @relation(fields: [userpoolId], references: [id])
 
   @@map("pool")
 }
+
+model Discord {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  avatar String
+  discord String
+  mensagem String
+
+  userpool User @relation(fields: [userpoolId], references: [id]) 
+  userpoolId String @unique
+
+  @@map("discord")
+ }

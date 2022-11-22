@@ -2,53 +2,54 @@ import { NextApiRequest, NextApiResponse} from 'next'
 import { avaliacoesProps } from '../../../@types/interfaces';
 import { prisma } from "../../../lib/prisma";
 
+import { unstable_getServerSession } from "next-auth/next"
+import { authOptions } from '../auth/[...nextauth]'
+
+
 type Props = avaliacoesProps
 
 
 export default async function Pool(req: NextApiRequest, res: NextApiResponse) {
     const { 
         title,
+        nota,
         description,
-        avatar,
         createdAt,
-        userpool,
-    }: Props = req.body
+    } = req.body
+
+    const session = await unstable_getServerSession(
+        req,
+        res,
+        authOptions
+    )
 
     try {
-    const pool = await prisma.pool.create({
-          data: {
-             title: title,
-             description: description,
-             avatar: avatar,
-             createdAt: createdAt,
-             userpool: {
-                create: {
-                    name: userpool.name,
-                    email: userpool.email,
+        const pool = await prisma.pool.create({
+            data: {
+                avatar: session.user.image,
+                title: title,
+                nota: nota,
+                description: description,
+                createdAt: createdAt,
+                userpool: {
+                    connect: {
+                        email: session.user.email,
+                    }
                 }
-             }
-          },
-          select: {
-            title: true,
-            description: true,
-            avatar: true,
-            createdAt: true,
-            userpoolId: false,
-            id: false,
-            userpool: {
-                select: {
-                    name: true,
-                    email: true,
-                }
+            },
+            select: {
+                title: true,
+                nota: true,
+                description: true,
+                createdAt: true,
+                avatar: true,
             }
-          }
-       })
+        })
 
-         res.status(200).json(pool) 
-
+        res.status(201).json(pool)
         
     } catch {
-        if(userpool ) {
+        if(title && nota && description && createdAt) {
             res.status(200).json({error: 'You already made a review'})
         } else {
             res.status(200).redirect('/')

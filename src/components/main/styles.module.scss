@@ -413,28 +413,34 @@
               .profile {
                   display: flex;
                   align-items: center;
-                  gap: 0.5rem;
+                  gap: 0.6rem;
   
                   img {
                       border-radius: 50%;
-                      width: 51px;
-                      height: 51px;
+                      width: 55px;
+                      height: 55px;
                       border: solid 2px #2256cf;
                       padding: 2px;
                   }
   
                   span {
-                      font-size: 1.254rem;
+                      font-size: 1.354rem;
+                    }
+
+                    .nota {
+                      display: flex;
+                      align-items: center;
+                      gap: 0.2rem;
                     }
               }
   
               strong {
-                  font-size: 1.454rem;
+                  font-size: 1.554rem;
               }
   
               p {
                   font-size: 1.050rem;
-                  line-height: 1.6;
+                  line-height: 1.65;
               }
   
               @media (max-width: 568px) {

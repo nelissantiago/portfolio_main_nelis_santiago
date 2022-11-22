@@ -679,5 +679,175 @@ function Game() {
   );
 }
 
+
+function Nota() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="23"
+      height="23"
+      fill="#f39c12"
+      aria-hidden="true"
+      className="svg-inline--fa fa-star"
+      data-icon="star"
+      data-prefix="fas"
+      viewBox="0 0 576 512"
+      style={{ marginLeft: 0 }}
+    >
+      <path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+    </svg>
+  );
+}
+
+
+function Prisma() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="256"
+      height="310"
+      preserveAspectRatio="xMidYMid"
+      viewBox="0 0 256 310"
+    >
+      <path d="M254.313 235.519L148 9.749A17.063 17.063 0 00133.473.037a16.87 16.87 0 00-15.533 8.052L2.633 194.848a17.465 17.465 0 00.193 18.747L59.2 300.896a18.13 18.13 0 0020.363 7.489l163.599-48.392a17.929 17.929 0 0011.26-9.722 17.542 17.542 0 00-.101-14.76l-.008.008zm-23.802 9.683l-138.823 41.05c-4.235 1.26-8.3-2.411-7.419-6.685l49.598-237.484c.927-4.443 7.063-5.147 9.003-1.035l91.814 194.973a6.63 6.63 0 01-4.18 9.18h.007z"></path>
+    </svg>
+  );
+}
+
+
+
+
+//DashBoard
+
+
+
+function EmailUndefined() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      fill="currentColor"
+      stroke="currentColor"
+      strokeWidth="0"
+      viewBox="0 0 24 24"
+    >
+      <path fill="none" stroke="none" d="M0 0h24v24H0V0z"></path>
+      <path
+        stroke="none"
+        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"
+      ></path>
+    </svg>
+  );
+}
+
+function Email() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      fill="currentColor"
+      stroke="currentColor"
+      strokeWidth="0"
+      viewBox="0 0 24 24"
+    >
+      <path fill="none" stroke="none" d="M0 0h24v24H0z"></path>
+      <path
+        stroke="none"
+        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h8v-2H4V8l8 5 8-5v5h2V6c0-1.1-.9-2-2-2zm-8 7L4 6h16l-8 5zm5.34 11l-3.54-3.54 1.41-1.41 2.12 2.12 4.24-4.24L23 16.34 17.34 22z"
+      ></path>
+    </svg>
+  );
+}
+
+function TelUndefined() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      fill="currentColor"
+      stroke="currentColor"
+      strokeWidth="0"
+      viewBox="0 0 16 16"
+    >
+      <path
+        stroke="none"
+        d="M3.654 1.328a.678.678 0 00-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 004.168 6.608 17.569 17.569 0 006.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 00-.063-1.015l-2.307-1.794a.678.678 0 00-.58-.122l-2.19.547a1.745 1.745 0 01-1.657-.459L5.482 8.062a1.745 1.745 0 01-.46-1.657l.548-2.19a.678.678 0 00-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 012.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 00.178.643l2.457 2.457a.678.678 0 00.644.178l2.189-.547a1.745 1.745 0 011.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 01-7.01-4.42 18.634 18.634 0 01-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"
+      ></path>
+      <path
+        fillRule="evenodd"
+        stroke="none"
+        d="M11.146 1.646a.5.5 0 01.708 0L13 2.793l1.146-1.147a.5.5 0 01.708.708L13.707 3.5l1.147 1.146a.5.5 0 01-.708.708L13 4.207l-1.146 1.147a.5.5 0 01-.708-.708L12.293 3.5l-1.147-1.146a.5.5 0 010-.708z"
+      ></path>
+    </svg>
+  );
+}
+
+
+function Tele() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      fill="currentColor"
+      stroke="currentColor"
+      strokeWidth="0"
+      viewBox="0 0 16 16"
+    >
+      <path
+        stroke="none"
+        d="M3.654 1.328a.678.678 0 00-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 004.168 6.608 17.569 17.569 0 006.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 00-.063-1.015l-2.307-1.794a.678.678 0 00-.58-.122l-2.19.547a1.745 1.745 0 01-1.657-.459L5.482 8.062a1.745 1.745 0 01-.46-1.657l.548-2.19a.678.678 0 00-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 012.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 00.178.643l2.457 2.457a.678.678 0 00.644.178l2.189-.547a1.745 1.745 0 011.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 01-7.01-4.42 18.634 18.634 0 01-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"
+      ></path>
+    </svg>
+  );
+}
+
+function Expired() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      fill="currentColor"
+      stroke="currentColor"
+      strokeWidth="0"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke="none"
+        d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"
+      ></path>
+      <path
+        stroke="none"
+        d="M13 7h-2v5.414l3.293 3.293 1.414-1.414L13 11.586z"
+      ></path>
+    </svg>
+  );
+}
+
+
+function Delete() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      fill="currentColor"
+      stroke="currentColor"
+      strokeWidth="0"
+      viewBox="0 0 24 24"
+    >
+      <g stroke="none">
+        <path fill="none" d="M0 0h24v24H0z"></path>
+        <path d="M17 6h5v2h-2v13a1 1 0 01-1 1H5a1 1 0 01-1-1V8H2V6h5V3a1 1 0 011-1h8a1 1 0 011 1v3zm1 2H6v12h12V8zm-9 3h2v6H9v-6zm4 0h2v6h-2v-6zM9 4v2h6V4H9z"></path>
+      </g>
+    </svg>
+  );
+}
+
+
   
-export { SunIcon, NightIcon, Gmail, Githubb, Telegram, Linkeedin, Content, Discord, GitHub, Instagram, Whatsapp, Conteudo, EBoook, EBookAcess, UiDesigner, Computer, Mobile, Powered, Search, Reactt, Searchh, Account, Repos, Date, Code, Game } 
+export { SunIcon, NightIcon, Gmail, Githubb, Telegram, Linkeedin, Content, Discord, GitHub, Instagram, Whatsapp, Conteudo, EBoook, EBookAcess, UiDesigner, Computer, Mobile, Powered, Search, Reactt, Searchh, Account, Repos, Date, Code, Game, Nota, EmailUndefined, Email, TelUndefined, Tele, Expired, Delete } 

@@ -9,12 +9,23 @@ import { Header } from "../components/header";
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 import { avaliacoesProps, UserPost } from "../@types/interfaces";
+import { authOptions } from "./api/auth/[...nextauth]";
+import { unstable_getServerSession } from "next-auth/next";
 interface Props {
   counts: {
     avaliacoescount: number
     count: number
   }
-  avaliacoes: avaliacoesProps[],
+  avaliacoes: {
+    title: string
+    nota: number
+    description: string
+    avatar: string
+    createdAt: Date
+    userpool: {
+      name: string,
+  }
+  }[]
   userPool: UserPost[]
 }
 
@@ -40,25 +51,23 @@ export const getStaticProps: GetStaticProps  = async () => {
   const count = await prisma.account.count()
   const avaliacoes = await prisma.pool.findMany({
     orderBy: {
-      createdAt: 'desc'
+      createdAt: "desc",
     },
     select: {
+      title: true,
+      description: true,
+      nota: true,
+      avatar: true,
+      createdAt: true,
       userpool: {
         select: {
           name: true,
-          email: true,
+          image: true,
         }
-      },
-      title: true,
-      description: true,
-      avatar: true,
-      createdAt: true,
-      
+      }
     }
   })
-
   
-
   const newaccount = await prisma.slugCreate.findMany({
     include: {
       tags: {

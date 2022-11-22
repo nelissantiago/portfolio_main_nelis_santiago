@@ -17,11 +17,11 @@ import javascript from '../../../public/images/js.svg'
 import tailwind from '../../../public/images/tailwind.svg'
 import nextjs from '../../../public/images/next.svg'
 import react from '../../../public/images/react.svg'
+import prisma from '../../../public/images/prisma.svg'
 import typescript from '../../../public/images/typescriptt.svg'
 import { Carousel } from './Assessments';
 import { gql, useQuery } from '@apollo/client';
 import { Created } from './created';
-import { avaliacoesProps } from '../../@types/interfaces';
 
 
 import 'keen-slider/keen-slider.min.css'
@@ -50,7 +50,15 @@ interface GetContentProps {
 }
 
 interface Propss {
-    avaliacoes: avaliacoesProps[],
+    avaliacoes: {
+        title: string,
+        nota: number,
+        description: string,
+        avatar: string,
+        userpool: {
+            name: string,
+        }
+    }[]
 
     counts: {
         avaliacoescount: number
@@ -61,8 +69,6 @@ interface Propss {
 export function Main(props: Propss) {
     const {data} = useQuery<GetContentProps>(GET_CONTENT_BY_GRAPHQL)
 
-
-    console.log(props.avaliacoes)
 
     const [sliderRef, instanceRef] = useKeenSlider(
         {
@@ -152,6 +158,12 @@ export function Main(props: Propss) {
         {
             tooltip: 'TAILWIND',
             img: tailwind,
+            width: 70,
+            height: 70,
+        },
+        {
+            tooltip: 'PRISMA',
+            img: prisma,
             width: 70,
             height: 70,
         },
@@ -280,10 +292,11 @@ export function Main(props: Propss) {
                             {props.avaliacoes.map(react => {
                             return (
                                 <>
-                                    <Carousel pool={react} key={react.id} />
+                                    <Carousel pool={react} />
                                 </>
                                 )
                             })}
+                            
                             </div>
                         </div>
                     </article>

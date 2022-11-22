@@ -1,0 +1,80 @@
+.history {
+    margin-top: 1.8rem;
+    h2 {
+        display: flex;
+        align-items: center;
+        height: 5rem;
+        font-size: 1.754rem;
+    }
+
+    .listHistory {
+        display: flex;
+        
+        & + .listHistory {
+            margin-top: 1.8rem;
+        }
+        
+
+        table {
+            border: solid red 1px;
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.25rem;
+
+            thead {
+                border-bottom: 1px solid #e2e8f0;
+                text-align: left;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+
+                tr {
+                    height: 3.5rem;
+
+                    th {
+                        padding: 0 1rem;
+                        font-size: 1.054rem;
+                        color: #29292e;
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    height: 4.5rem;
+
+                    button[type="button"] {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.3rem;
+                    height: 2.7rem;
+                    padding: 0 0.7rem;
+                    border: none;
+                    border-radius: 0.25rem;
+                    background: rgba(225, 6, 6, 0.93);
+                    color: #fff;
+                    font-size: 1.154rem;
+                    transition: filter 0.2s;
+    
+                    &:hover {
+                        filter: brightness(0.9);
+                    }
+
+                    svg {
+                        color: white;
+                        font-size: 1.254rem;
+                    }
+                    }
+
+
+                    td {
+                        padding: 0 1rem;
+                        font-size: 1.154rem;
+                        line-height: 1.45rem;
+                        text-transform: lowercase;
+                    }
+                }
+            }
+        }
+    }
+}
