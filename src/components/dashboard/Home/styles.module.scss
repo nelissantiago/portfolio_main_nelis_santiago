@@ -16,7 +16,7 @@
         grid-gap: 1rem;
         gap: 1rem;
 
-        @media(max-width: 768px) {
+        @media(max-width:860px) {
             display: flex;
             flex-direction: column;
         }
@@ -130,9 +130,21 @@
                     align-items: center;
                     font-size: 1.454rem;
                 }
+            }
 
+            .button {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                padding: 1.3rem 0.5rem;
+                background-color: transparent;
+                border-radius: 0 0 0.25rem 0.25rem;
+                cursor: pointer;
 
-
+                span {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.2rem;
+                    font-size: 1.254rem;
+                }
             }
     
         }
@@ -183,6 +195,12 @@
                         @media(max-width: 768px) {
                             height: 10rem;
                         }
+
+                        &:disabled {
+                            font-size: 1.1rem;
+                            cursor: not-allowed;
+                            background-color: none;
+                        }
                     }
 
                     button[type="submit"] {
@@ -195,6 +213,11 @@
 
                         &:hover {
                             filter: brightness(0.9);
+                        }
+
+                        &:disabled {
+                            cursor: not-allowed;
+                            filter: none;
                         }
                     }
                 }

@@ -7,10 +7,6 @@ import { DashBoard } from "../../components/dashboard/Home";
 import { authOptions } from "../api/auth/[...nextauth]";
 import { avaliacoesProps } from "../../@types/interfaces";
 import { ThemeProvider } from "next-themes";
-import { toast } from "react-toastify";
-import { formatDate } from "../../components/utils/format";
-import { useSession } from "next-auth/react";
-import { useEffect } from "react";
 
 interface AccountProps {
   pool: avaliacoesProps,
@@ -18,6 +14,7 @@ interface AccountProps {
     name: string,
     image: string,
     email: string,
+    roles: string,
     pool: {
         title: string,
         nota: number,
@@ -84,6 +81,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
   }
 
+
   const pool = await prisma.pool.findMany({
     orderBy: {
       createdAt: "desc",
@@ -98,11 +96,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         select: {
           name: true,
           image: true,
+          roles: true,
         }
       }
     }
   })
-
+  
  const userprofile = await prisma.user.findMany({
   where: {
     name: session.user.name,
@@ -112,6 +111,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     name: true,
     email: true,
     image: true,
+    roles: true,
     pool: {
       select: {
         title: true,
@@ -131,9 +131,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         mensagem: true,
         userpoolId: true,
       }
-    }
+    },
   }
  })
+
 
 
  /**

@@ -4,12 +4,14 @@ import styles from './styles.module.scss'
 
 import { Delete } from '../../utils/CreateSVG'
 import { Axios } from '../../../lib/axios';
+import { FormEvent } from 'react';
 
 interface Props {
     pooluser: {
       name: string,
       image: string,
       email: string,
+      roles: string,
       pool: {
           title: string,
           description: string,
@@ -89,7 +91,19 @@ export function History(props: Props) {
                 delay: 500,
             })
         }
+ }
+
+    function CopyID(event: FormEvent) {
+        event.preventDefault()
+
+      const id =  navigator.clipboard.writeText(props.pooluser.discord[0].id)
+
+        toast.success(`ID Copiado`, {
+            delay: 500,
+        })
+
     }
+
     return (
         <>
     
@@ -109,7 +123,7 @@ export function History(props: Props) {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{props.pooluser.discord[0].id}</td>
+                                            <td className={styles.id} onClick={CopyID}>{props.pooluser.discord[0].id}</td>
                                             <td>{props.pooluser.discord[0].discord}</td>
                                             <td><button type="button" onClick={HandleDeleteDiscord}><Delete />Deletar</button></td>
                                         </tr>

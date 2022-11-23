@@ -1,4 +1,4 @@
-import { Account, EBookAcess, Email, Repos } from '../../utils/CreateSVG';
+import { Account, Admin, EBookAcess, Email, Nota, Repos } from '../../utils/CreateSVG';
 import { signOut, useSession } from "next-auth/react";
 import { FragementParticles } from '../../utils/particles'
 
@@ -15,6 +15,7 @@ interface Props{
     name: string,
     image: string,
     email: string,
+    roles: string,
     pool: {
         title: string,
         description: string,
@@ -41,12 +42,26 @@ export function DashBoard(props: Props) {
 
   //Avaliação - States
   const [Title, setTitle] = useState('')
-  const [Note, setNote] = useState<Number>()
+  const [Note, setNote] = useState(0)
   const [Description, setDescription] = useState('')
   
   //Contato - States
   const [DiscordUser, setUserDiscord] = useState('')
   const [Mensagem, setMensagem] = useState('')
+
+  
+  const nota = [
+    {
+      nota: 
+      Note === 0 && "" ||
+      Note  === 1 && <><Nota/></> || 
+      Note === 2 && <><Nota/><Nota/></> || 
+      Note ===  3 && <><Nota/><Nota/><Nota/></> ||
+      Note === 4 && <><Nota/><Nota/><Nota/><Nota/></> || 
+      Note ===  5 && <><Nota/><Nota/><Nota/><Nota/><Nota/></> ||
+      Note >= 6 && "Nota de 1 a 5"
+    }
+  ]
 
     async function HandleAddReview(e: FormEvent) {
       e.preventDefault()
@@ -74,6 +89,7 @@ export function DashBoard(props: Props) {
         setTitle('')
         setNote(0)
         setDescription('')
+
 
       } catch {
         toast.error('Erro ao postar avaliação', {
@@ -155,6 +171,12 @@ export function DashBoard(props: Props) {
       }
     }
 
+    function PermissionRoles(event: FormEvent) {
+      event.preventDefault()
+      toast.error('Voce não tem permissão.', {
+        delay: 500
+      })
+    }
     return (
         <>
         <main className={styles.main} id="embed" >
@@ -164,33 +186,78 @@ export function DashBoard(props: Props) {
                     <div className={styles.profile}>
                         <img src={session?.user.image} alt="" />
                         <strong>{props.pooluser[0].name}</strong>
-                        <span>Membro</span>
+                        <span>{props.pooluser[0].roles}</span>
                         <button onClick={() => signOut()}>SAIR</button>
                     </div>
                     <div className={styles.info}>
                         <span><Email /><p>{props.pooluser[0].email}</p></span>
                         <span><EBookAcess /><p>{props.pooluser[0].pool.length} Avaliação</p></span>
                         <span><Repos /><p>{props.pooluser[0].discord.length} Contato</p></span>
-                        <span><Account /><p>{status === 'authenticated' && 'Logada'}</p></span>
+                        <span><Account /><p>{status === 'authenticated' ? 'Logado' : ""}</p></span>
                     </div>
+                    {props.pooluser[0].roles === 'Admin' ? (
+                      <>
+                       <button className={styles.button} onClick={() => {
+                        toast.success('Redirecionando...', {
+                          delay: 500
+                         })
+                         window.location.href = '/account/admin'
+                       }}>
+                        <span><Admin />Painel Do Administrador</span>
+                      </button>
+                      </>
+                    ) : ""}
                     </div>
                     <div className={styles.content}>
                         <div className={styles.formList}>
-                            <form onSubmit={HandleAddReview}>
-                                <input type="text" placeholder={props.pooluser[0].name} disabled />
-                                <input type="text" placeholder="Titulo" required onChange={event => setTitle(event.target.value)} value={Title} maxLength={32} />
-                                <input type="number" placeholder="Nota de 1 a 5" max={5} min={1} required  onChange={event => setNote(Number(event.target.value))} value={Number(Note)} />
-                                <textarea maxLength={120} placeholder="Descrição" required onChange={event => setDescription(event.target.value)} value={Description} />
-                                {Description.length === 0 ? "" : <span className={styles.lengthDescription}>{Description.length}/120</span>}
-                                <button type="submit">Avaliação</button>
-                            </form>
-                            <form onSubmit={HandleContact}>
-                                <input type="text" placeholder={props.pooluser[0].name} disabled />
-                                <input type="text" placeholder="Ex: Anonimo#0000" required  onChange={event => setUserDiscord(event.target.value)} value={DiscordUser} />
-                                <textarea maxLength={220} placeholder="Mensagem" required onChange={event => setMensagem(event.target.value)} value={Mensagem}></textarea>
-                                {Mensagem.length === 0 ? "" : <span className={styles.lengthDescription}>{Mensagem.length}/220</span>}
-                                <button type="submit" >Contato</button>
-                            </form>
+                            {props.pooluser[0].roles === 'Membro' ? (
+                              <>
+                                <form onSubmit={HandleAddReview} onClick={PermissionRoles}>
+                                  <input type="text" placeholder={props.pooluser[0].name} disabled />
+                                  <input type="text" placeholder="Titulo"  required onChange={event => setTitle(event.target.value)} value={Title} maxLength={32}  disabled/>
+                                  <input type="number" placeholder="Nota de 1 a 5" max={5} min={1} required  onChange={event => setNote(Number(event.target.value))} disabled />
+                                  <textarea maxLength={120} placeholder="Descrição" required onChange={event => setDescription(event.target.value)} value={Description} disabled />
+                                  {Description.length === 0 ? "" : <span className={styles.lengthDescription}>{Description.length}/120</span>}
+                                  <button type="submit" disabled={true} >Avaliação</button>
+                              </form>
+                              </>
+                            ) : (
+                              <>
+                                <form onSubmit={HandleAddReview}>
+                                  <input type="text" placeholder={props.pooluser[0].name} disabled />
+                                  <input type="text" placeholder="Titulo" required onChange={event => setTitle(event.target.value)} value={Title} maxLength={32} />
+                                  <input type="number" placeholder="Nota de 1 a 5" max={5} min={1} required  onChange={event => setNote(Number(event.target.value))} value={Note} />
+                                  {Note ? (
+                                     <>
+                                     {nota.map(react => {
+                                     return (
+                                       <>
+                                       <div className={styles.lengthDescription}>
+                                         <span>{react.nota}</span>
+                                       </div>
+                                       </>
+                                     )
+                                   })}
+                               
+                                   </>
+                                  ) : ""}
+                                  <textarea maxLength={120} placeholder="Descrição" required onChange={event => setDescription(event.target.value)} value={Description} />
+                                  {Description.length === 0 ? "" : <span className={styles.lengthDescription}>{Description.length}/120</span>}
+                                  <button type="submit">Avaliação</button>
+                              </form>
+                              </>
+                            )}
+                            {props.pooluser[0].roles ? (
+                              <>
+                                <form onSubmit={HandleContact}>
+                                  <input type="text" placeholder={props.pooluser[0].name} disabled />
+                                  <input type="text" maxLength={20} placeholder="Ex: Anonimo#0000" required  onChange={event => setUserDiscord(event.target.value)} value={DiscordUser} />
+                                  <textarea maxLength={220} placeholder="Mensagem" required onChange={event => setMensagem(event.target.value)} value={Mensagem}></textarea>
+                                  {Mensagem.length === 0 ? "" : <span className={styles.lengthDescription}>{Mensagem.length}/220</span>}
+                                  <button type="submit" >Contato</button>
+                              </form>
+                              </>
+                            ) : ""}
                         </div>
                         {props.pooluser.map(react => {
                           return (

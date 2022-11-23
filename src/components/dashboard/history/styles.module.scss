@@ -9,7 +9,7 @@
 
     .listHistory {
         display: flex;
-        
+        overflow: auto;
         & + .listHistory {
             margin-top: 1.8rem;
         }
@@ -73,6 +73,13 @@
                         line-height: 1.45rem;
                         text-transform: lowercase;
                     }
+                }
+
+                .id {
+                    max-width: 150px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    cursor: pointer;
                 }
             }
         }

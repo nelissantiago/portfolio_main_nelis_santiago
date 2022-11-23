@@ -8,9 +8,7 @@ import { Header } from "../components/header";
 
 import Aos from 'aos'
 import 'aos/dist/aos.css'
-import { avaliacoesProps, UserPost } from "../@types/interfaces";
-import { authOptions } from "./api/auth/[...nextauth]";
-import { unstable_getServerSession } from "next-auth/next";
+import { UserPost } from "../@types/interfaces";
 interface Props {
   counts: {
     avaliacoescount: number
@@ -81,8 +79,6 @@ export const getStaticProps: GetStaticProps  = async () => {
   const AccountMaping = newaccount.map((account) => ({
     ...account.tags.map(tag => tag.tag.name)
   }));
-
- 
 
   return {
     props: {

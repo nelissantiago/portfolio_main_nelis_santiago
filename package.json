@@ -2,6 +2,7 @@
   "name": "myportfolio",
   "version": "0.1.0",
   "private": true,
+  "main": "src/pages/index.tsx",
   "author": {
     "name": "Nelis Santiago Front End Developer"
   },
@@ -46,13 +47,5 @@
     "eslint-config-next": "12.2.3",
     "prisma": "^4.2.1",
     "typescript": "^4.7.4"
-  },
-  "lint-staged": {
-    "*.+(js|jsx|ts|tsx)": [
-      "eslint --fix"
-    ],
-    "*.+(js|jsx|ts|tsx|json|css|md|mdx)": [
-      "prettier --write"
-    ]
   }
 }
