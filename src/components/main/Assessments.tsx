@@ -22,7 +22,7 @@ export function Carousel({ pool }: Props) {
     const [sliderRef, instanceRef] = useKeenSlider(
       {
       slides: {
-          perView: 1.544,
+          perView: 1.144,
           spacing: 10,
       },
       mode: 'free-snap',
@@ -47,7 +47,7 @@ export function Carousel({ pool }: Props) {
                               {pool ? (
                                 <>
                                   <div className={styles.profile}>
-                              <img src={pool.avatar} alt="" />
+                                  <img src={pool.avatar} alt="" />
                                   <span>{pool.userpool.name}</span>
                                   <span className={styles.nota}>
                                     {nota.map(react => {

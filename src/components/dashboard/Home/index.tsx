@@ -33,7 +33,7 @@ interface Props{
         length?: number,
         userpoolId: number,
     }
-}[]
+} []
 }
 
 
@@ -67,12 +67,11 @@ export function DashBoard(props: Props) {
       e.preventDefault()
 
       try {
-
-      const response = await Axios.post('/post', {
-        title: Title,
-        nota: Note,
-        description: Description,
-        createdAt: new Date(),
+        const response = await Axios.post('/post', {
+          title: Title,
+          nota: Note,
+          description: Description,
+          createdAt: new Date(),
         })
 
         if(response.status === 201) {
@@ -94,7 +93,6 @@ export function DashBoard(props: Props) {
       } catch {
         toast.error('Erro ao postar avaliação', {
           delay: 500,
-          className: styles.toastr
         })
 
         setTitle('')
@@ -122,7 +120,6 @@ export function DashBoard(props: Props) {
             },
               body: JSON.stringify({
                 username: 'Bot de contatos',
-                delay: 500,
                 embeds: [
                   {
                     title: 'Nelis Santiago - Portfolio',
@@ -152,12 +149,14 @@ export function DashBoard(props: Props) {
               })
             })
     
-          setTimeout(() => {
-            window.location.reload()
-          }, 1500);
+            setTimeout(() => {
+              window.location.reload()
+            }, 1500);
           
         } else {
-          toast.error('Voce ja enviou uma mensagem!')
+          toast.error('Voce ja enviou uma mensagem!', {
+            delay: 500,
+          })
         }
 
         setUserDiscord('')
@@ -166,17 +165,17 @@ export function DashBoard(props: Props) {
       } catch {
         toast.error('Erro ao enviar mensagem', {
           delay: 500,
-          className: styles.toastr
         })
       }
     }
 
-    function PermissionRoles(event: FormEvent) {
+    const PermissionRoles = (event: FormEvent) => {
       event.preventDefault()
-      toast.error('Voce não tem permissão.', {
-        delay: 500
-      })
+        toast.error('Voce não tem permissão.', {
+          delay: 500
+        })
     }
+
     return (
         <>
         <main className={styles.main} id="embed" >
@@ -195,18 +194,18 @@ export function DashBoard(props: Props) {
                         <span><Repos /><p>{props.pooluser[0].discord.length} Contato</p></span>
                         <span><Account /><p>{status === 'authenticated' ? 'Logado' : ""}</p></span>
                     </div>
-                    {props.pooluser[0].roles === 'Admin' ? (
-                      <>
-                       <button className={styles.button} onClick={() => {
-                        toast.success('Redirecionando...', {
-                          delay: 500
-                         })
-                         window.location.href = '/account/admin'
-                       }}>
-                        <span><Admin />Painel Do Administrador</span>
-                      </button>
-                      </>
-                    ) : ""}
+                      {props.pooluser[0].roles === 'Admin' ? (
+                        <>
+                        <button className={styles.button} onClick={() => {
+                          toast.success('Redirecionando...', {
+                            delay: 500
+                          })
+                          window.location.href = '/account/admin'
+                        }}>
+                          <span><Admin />Painel Do Administrador</span>
+                        </button>
+                        </>
+                      ) : ""}
                     </div>
                     <div className={styles.content}>
                         <div className={styles.formList}>
@@ -227,20 +226,19 @@ export function DashBoard(props: Props) {
                                   <input type="text" placeholder={props.pooluser[0].name} disabled />
                                   <input type="text" placeholder="Titulo" required onChange={event => setTitle(event.target.value)} value={Title} maxLength={32} />
                                   <input type="number" placeholder="Nota de 1 a 5" max={5} min={1} required  onChange={event => setNote(Number(event.target.value))} value={Note} />
-                                  {Note ? (
-                                     <>
-                                     {nota.map(react => {
-                                     return (
-                                       <>
-                                       <div className={styles.lengthDescription}>
-                                         <span>{react.nota}</span>
-                                       </div>
-                                       </>
-                                     )
-                                   })}
-                               
-                                   </>
-                                  ) : ""}
+                                    {Note ? (
+                                      <>
+                                      {nota.map(react => {
+                                      return (
+                                        <>
+                                        <div className={styles.lengthDescription}>
+                                          <span>{react.nota}</span>
+                                        </div>
+                                        </>
+                                      )
+                                    })}
+                                    </>
+                                    ) : ""}
                                   <textarea maxLength={120} placeholder="Descrição" required onChange={event => setDescription(event.target.value)} value={Description} />
                                   {Description.length === 0 ? "" : <span className={styles.lengthDescription}>{Description.length}/120</span>}
                                   <button type="submit">Avaliação</button>
@@ -259,13 +257,13 @@ export function DashBoard(props: Props) {
                               </>
                             ) : ""}
                         </div>
-                        {props.pooluser.map(react => {
-                          return (
-                            <>
-                            <History pooluser={react} />
-                            </>
-                          )
-                        })}
+                          {props.pooluser.map(react => {
+                              return (
+                                <>
+                                  <History pooluser={react} />
+                                </>
+                              )
+                          })}
                     </div>
                 </div>
             </div>

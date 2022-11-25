@@ -1,6 +1,7 @@
 import { gql, useQuery } from "@apollo/client"
 import { useState} from 'react'
 import styles from './styles.module.scss'
+
 import { Lesson } from "./Content";
 import { Repos, Search } from "../utils/CreateSVG";
 import { Loading } from "./loading";
@@ -14,35 +15,64 @@ export const GET_LESSON_BY_GRAPH = gql`
         diaLancado
         title
         description
-        titlecontent
-        descriptioncontent
-        image
         titulotwo
         descriptiontwo
-        imagetwo
         titulothree
         descriptionthree
-        imagethree
+        titlecontent
+        descriptioncontent
+        image {
+          fileName
+          height
+          width
+          url
+        }
+        imagetwo {
+          fileName
+          height
+          width
+          url
+        }
+        imagethree {
+          fileName
+          height
+          width
+          url
+        }
       }
     }
 `
-
-export interface Props {
+ interface Props {
     contents: {
         id: string;
         slug: string;
         diaLancado: string;
         title: string;
         description: string;
-        titlecontent: string;
-        descriptioncontent: string;
-        image: string;
         titulotwo: string;
         descriptiontwo: string;
-        imagetwo: string;
         titulothree: string;
         descriptionthree: string;
-        imagethree: string;
+        titlecontent: string;
+        descriptioncontent: string;
+        image: {
+          fileName: string;
+          height: number;
+          width: number;
+          url: string;
+        }
+        imagetwo: {
+          fileName: string;
+          height: number;
+          width: number;
+          url: string;
+        }
+        imagethree: {
+          fileName: string;
+          height: number;
+          width: number;
+          url: string;
+        }
     }[]
 }
 
@@ -67,10 +97,10 @@ export function SideBar() {
               <div className={styles.search}>
                 <Search />
                 <input  
-                placeholder="Pesquisar por conteudo"  
-                type="text" 
-                className={styles.inputSearch}
-                onChange={e => SetSearch(e.target.value)} 
+                  placeholder="Pesquisar por conteudo"  
+                  type="text" 
+                  className={styles.inputSearch}
+                  onChange={e => SetSearch(e.target.value)} 
                 />
                 <div className={styles.repos}>
                 <Repos /> {filterItens?.length}
@@ -86,8 +116,8 @@ export function SideBar() {
                   <>
                     <Lesson
                       key={react.id}
-                      title={react.title}
-                      description={react.description}
+                      title={react.titlecontent}
+                      description={react.descriptioncontent}
                       slug={react.slug}
                     />
                   </>
@@ -95,8 +125,8 @@ export function SideBar() {
               })}
               </div>
             </div>
+            <FragementParticles />
           </main>
-          <FragementParticles />
       </>
   );
 }

@@ -57,11 +57,11 @@ export function History(props: Props) {
                     delay: 500,
                 })
             }
-        } catch {
-            toast.error('Tente Novamente mais tarde!', {
-                delay: 500,
-            })
-        }
+            } catch {
+                toast.error('Tente Novamente mais tarde!', {
+                    delay: 500,
+                })
+            }
     }
 
     async function HandleDeleteDiscord() {
@@ -95,8 +95,7 @@ export function History(props: Props) {
 
     function CopyID(event: FormEvent) {
         event.preventDefault()
-
-      const id =  navigator.clipboard.writeText(props.pooluser.discord[0].id)
+       navigator.clipboard.writeText(props.pooluser.discord[0].id)
 
         toast.success(`ID Copiado`, {
             delay: 500,

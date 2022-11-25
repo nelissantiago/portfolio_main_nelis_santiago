@@ -73,7 +73,7 @@ export function Main(props: Propss) {
     const [sliderRef, instanceRef] = useKeenSlider(
         {
          slides: {
-            perView: 1.544,
+            perView: 1.454,
             spacing: 10,
          },
          mode: 'free-snap',

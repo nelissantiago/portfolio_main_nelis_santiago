@@ -6,7 +6,6 @@ import { prisma } from '../../lib/prisma'
 import { DashBoard } from "../../components/dashboard/Home";
 import { authOptions } from "../api/auth/[...nextauth]";
 import { avaliacoesProps } from "../../@types/interfaces";
-import { ThemeProvider } from "next-themes";
 
 interface AccountProps {
   pool: avaliacoesProps,
@@ -31,7 +30,7 @@ interface AccountProps {
         mensagem: string,
         userpoolId: number,
     },
-}[]
+} []
 }
 
 export default function Account(props: AccountProps) {
@@ -40,18 +39,16 @@ export default function Account(props: AccountProps) {
       <Head>
         <title>Dashboard - Inicio</title>
       </Head>
-      <ThemeProvider attribute="class" defaultTheme="system">
       <DashBoard pool={props.pool} pooluser={props.pooluser} />
-      </ThemeProvider>
     </>
   )
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await unstable_getServerSession(
-    context.req,
-    context.res,
-    authOptions
+      context.req,
+      context.res,
+      authOptions
     )
 
   if(!session) {
@@ -65,14 +62,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const { slug } = context.params as { slug: string };
 
-  const newaccount = await prisma.slugCreate.findUnique({
+  const slugdashboard = await prisma.slugCreate.findUnique({
     where: {
       slug,
     },
   });
 
 
-  if (!newaccount) {
+  if (!slugdashboard) {
     return {
       redirect: {
         destination: "/",
@@ -133,9 +130,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
     },
   }
- })
+ }) 
 
-
+  return {
+    props: {
+      slugdashboard,
+      pool: JSON.parse(JSON.stringify(pool)),
+      pooluser: JSON.parse(JSON.stringify(userprofile)),
+    },
+  };
+};
 
  /**
   * 
@@ -200,14 +204,3 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   })
    */
- 
-
-  return {
-    props: {
-      newaccount,
-      pool: JSON.parse(JSON.stringify(pool)),
-      pooluser: JSON.parse(JSON.stringify(userprofile)),
-    },
-  };
-};
-
