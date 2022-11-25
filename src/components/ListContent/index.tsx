@@ -42,7 +42,7 @@ export const GET_LESSON_BY_GRAPH = gql`
       }
     }
 `
- interface Props {
+ export interface Props {
     contents: {
         id: string;
         slug: string;
